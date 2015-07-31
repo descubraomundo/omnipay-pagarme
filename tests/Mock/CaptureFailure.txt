@@ -1,0 +1,27 @@
+HTTP/1.1 400 Bad Request
+Server: nginx 
+Date: Fri, 31 Jul 2015 17:45:22 GMT 
+Content-Type: application/json 
+Content-Length: 182 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: chrome-extension://hgmloofddffdnphfgcellkdfbfbjeloo
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 1929ms
+X-Iinfo: 9-26677609-26677617 NNNN CT(149 149 0) RT(1438364719548 59) q(0 0 3 -1) r(23 23) U6
+X-CDN: Incapsula
+
+{
+  "errors": [
+    {
+      "type": "action_forbidden",
+      "parameter_name": null,
+      "message": "Transação com status 'paid' não pode ser capturada."
+    }
+  ],
+  "url": "/transactions/243899/capture",
+  "method": "post"
+}

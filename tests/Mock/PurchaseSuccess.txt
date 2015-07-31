@@ -1,0 +1,63 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 31 Jul 2015 12:19:43 GMT
+Content-Type: application/json
+Content-Length: 1083
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+ETag: "724117771"
+X-Powered-By: Express
+X-Response-Time: 527ms
+Set-Cookie: visid_incap_166741=oZKeRdfgQ1mRRkOPwjnaON5nu1UAAAAAQUIPAAAAAABpwNNd4lgdCxdwK4JRHvB6; expires=Sun, 30 Jul 2017 11:11:45 GMT; path=/; Domain=.pagar.me
+Set-Cookie: incap_ses_298_166741=IM0hXIm18Db0eoiyo7UiBN5nu1UAAAAA/KytGgvgZZLck7rjYM4c6g==; path=/; Domain=.pagar.me
+X-Iinfo: 2-2657535-2657536 NNNN CT(145 145 0) RT(1438345181302 43) q(0 0 3 -1) r(10 10) U6
+X-CDN: Incapsula
+
+{
+  "object": "transaction",
+  "status": "processing",
+  "refuse_reason": null,
+  "status_reason": "acquirer",
+  "acquirer_response_code": null,
+  "authorization_code": null,
+  "soft_descriptor": "testeDeAPI",
+  "tid": null,
+  "nsu": null,
+  "date_created": "2015-02-25T21:54:56.000Z",
+  "date_updated": "2015-02-25T21:54:56.000Z",
+  "amount": 310000,
+  "installments": 5,
+  "id": 184220,
+  "cost": 0,
+  "postback_url": "http://requestb.in/pkt7pgpk",
+  "payment_method": "credit_card",
+  "antifraud_score": null,
+  "boleto_url": null,
+  "boleto_barcode": null,
+  "boleto_expiration_date": null,
+  "referer": "api_key",
+  "ip": "189.8.94.42",
+  "subscription_id": null,
+  "phone": null,
+  "address": null,
+  "customer": null,
+  "card": {
+    "object": "card",
+    "id": "card_ci6l9fx8f0042rt16rtb477gj",
+    "date_created": "2015-02-25T21:54:56.000Z",
+    "date_updated": "2015-02-25T21:54:56.000Z",
+    "brand": "mastercard",
+    "holder_name": "Api Customer",
+    "first_digits": "548045",
+    "last_digits": "3123",
+    "fingerprint": "HSiLJan2nqwn",
+    "valid": null
+  },
+  "metadata": {
+    "idProduto": "13933139"
+  }
+}

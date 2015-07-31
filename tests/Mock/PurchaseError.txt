@@ -1,0 +1,29 @@
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Fri, 31 Jul 2015 16:28:15 GMT
+Content-Type: application/json
+Content-Length: 130
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 8ms
+Set-Cookie: visid_incap_166741=FMU9RKxvQl6okudbCNPNJB6iu1UAAAAAQUIPAAAAAABZbEdO3aRXUagaoScETNBL; expires=Sun, 30 Jul 2017 11:11:56 GMT; path=/; Domain=.pagar.me
+Set-Cookie: incap_ses_298_166741=m+5BIscpLHh61Mayo7UiBB6iu1UAAAAA1v1KxPYgmtpp0tdlPhwwIA==; path=/; Domain=.pagar.me
+X-Iinfo: 9-25830376-25830389 NNNN CT(142 291 0) RT(1438360093918 41) q(0 0 4 -1) r(6 6) U6
+X-CDN: Incapsula
+
+{
+  "errors": [
+    {
+      "type": "action_forbidden",
+      "parameter_name": null,
+      "message": "api_key inválida"
+    }
+  ],
+  "url": "/transactions",
+  "method": "post"
+}

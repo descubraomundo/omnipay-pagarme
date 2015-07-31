@@ -1,0 +1,30 @@
+{
+    "name": "dmi/omnipay-pagarme",
+    "description": "Pagarme driver for the Omnipay payment processing libray",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "pagarme"
+    ],
+    "homepage": "http://www.descubraomundo.com/",
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ednei Oliveira",
+            "email": "ednei.oliveira@descubraomundo.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Pagarme\\" : "src/" }
+    },
+    "minimum-stability": "dev"
+}

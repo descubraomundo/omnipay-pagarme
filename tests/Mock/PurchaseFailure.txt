@@ -1,0 +1,68 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 31 Jul 2015 15:56:23 GMT
+Content-Type: application/json
+Content-Length: 1069
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+ETag: "1629440755"
+X-Powered-By: Express
+X-Response-Time: 1116ms
+Set-Cookie: visid_incap_166741=Q1AmyzJSS9e61KZAK/8r1aaau1UAAAAAQUIPAAAAAADt/+iZjUpnkSiCbnH4SsOm; expires=Sun, 30 Jul 2017 11:11:56 GMT; path=/; Domain=.pagar.me
+Set-Cookie: incap_ses_298_166741=WX3WdcgxREWIvr6yo7UiBKaau1UAAAAAjb9djctPb9dPyhL9hGFLcQ==; path=/; Domain=.pagar.me
+X-Iinfo: 9-25489878-25489887 NNNN CT(148 147 0) RT(1438358181174 45) q(0 0 3 -1) r(16 16) U6
+X-CDN: Incapsula
+
+{
+  "object": "transaction",
+  "status": "refused",
+  "refuse_reason": "acquirer",
+  "status_reason": "acquirer",
+  "acquirer_response_code": "23",
+  "acquirer_name": "development",
+  "authorization_code": null,
+  "soft_descriptor": null,
+  "tid": 1438358183137,
+  "nsu": 1438358183137,
+  "date_created": "2015-07-31T15:56:22.000Z",
+  "date_updated": "2015-07-31T15:56:23.000Z",
+  "amount": 1000,
+  "installments": 1,
+  "id": 243844,
+  "cost": 0,
+  "card_holder_name": "Test User",
+  "card_last_digits": "1111",
+  "card_first_digits": "411111",
+  "card_brand": "visa",
+  "postback_url": null,
+  "payment_method": "credit_card",
+  "antifraud_score": null,
+  "boleto_url": null,
+  "boleto_barcode": null,
+  "boleto_expiration_date": null,
+  "referer": "api_key",
+  "ip": "179.159.56.226",
+  "subscription_id": null,
+  "phone": null,
+  "address": null,
+  "customer": null,
+  "card": {
+    "object": "card",
+    "id": "card_cicq9age0005h4d6d7hxx7034",
+    "date_created": "2015-07-30T13:47:46.000Z",
+    "date_updated": "2015-07-30T13:47:47.000Z",
+    "brand": "visa",
+    "holder_name": "Test User",
+    "first_digits": "411111",
+    "last_digits": "1111",
+    "country": "US",
+    "fingerprint": "Reg2tq3yk1YY",
+    "valid": true
+  },
+  "metadata": {},
+  "antifraud_metadata": {}
+}

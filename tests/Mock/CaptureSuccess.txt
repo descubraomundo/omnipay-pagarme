@@ -1,0 +1,66 @@
+HTTP/1.1 200 OK
+Server: nginx 
+Date: Fri, 31 Jul 2015 17:41:19 GMT 
+Content-Type: application/json 
+Content-Length: 1088 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: chrome-extension://hgmloofddffdnphfgcellkdfbfbjeloo
+Charset: utf-8
+ETag: "1435557084" 
+X-Powered-By: Express
+X-Response-Time: 2773ms
+X-Iinfo: 10-30861780-30874402 NNNN CT(143 144 0) RT(1438364415351 60222) q(0 0 3 -1) r(32 32) U6
+X-CDN: Incapsula
+
+{
+  "object": "transaction",
+  "status": "paid",
+  "refuse_reason": null,
+  "status_reason": "acquirer",
+  "acquirer_response_code": "00",
+  "acquirer_name": "development",
+  "authorization_code": "60365",
+  "soft_descriptor": null,
+  "tid": "1438364417134",
+  "nsu": "1438364417134",
+  "date_created": "2015-07-31T17:40:16.000Z",
+  "date_updated": "2015-07-31T17:41:19.000Z",
+  "amount": 3100,
+  "installments": 1,
+  "id": 243899,
+  "cost": 96.5,
+  "card_holder_name": "Api Customer",
+  "card_last_digits": "3123",
+  "card_first_digits": "548045",
+  "card_brand": "mastercard",
+  "postback_url": null,
+  "payment_method": "credit_card",
+  "antifraud_score": null,
+  "boleto_url": null,
+  "boleto_barcode": null,
+  "boleto_expiration_date": null,
+  "referer": "api_key",
+  "ip": "179.159.56.226",
+  "subscription_id": null,
+  "phone": null,
+  "address": null,
+  "customer": null,
+  "card": {
+    "object": "card",
+    "id": "card_cicrliw3p002jxy6d80lm3b0e",
+    "date_created": "2015-07-31T12:18:01.000Z",
+    "date_updated": "2015-07-31T12:18:02.000Z",
+    "brand": "mastercard",
+    "holder_name": "Api Customer",
+    "first_digits": "548045",
+    "last_digits": "3123",
+    "country": "BR",
+    "fingerprint": "HSiLJan2nqwn",
+    "valid": true
+  },
+  "metadata": {},
+  "antifraud_metadata": {}
+}

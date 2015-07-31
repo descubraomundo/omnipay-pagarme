@@ -1,0 +1,28 @@
+HTTP/1.1 400 Bad Request
+Server: nginx 
+Date: Fri, 31 Jul 2015 19:25:33 GMT 
+Content-Type: application/json 
+Content-Length: 152 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: chrome-extension://hgmloofddffdnphfgcellkdfbfbjeloo
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 2164ms
+Set-Cookie: incap_ses_298_166741=aaZzGn2fU1uM6vSyo7UiBK3Lu1UAAAAA7PK7Q+b/cgXIVIOAhhhiwQ==; path=/; Domain=.pagar.me 
+X-Iinfo: 9-27799168-27812307 NNNN CT(142 141 0) RT(1438370661434 69074) q(0 0 2 1) r(26 26) U6
+X-CDN: Incapsula
+
+{
+  "errors": [
+    {
+      "type": "action_forbidden",
+      "parameter_name": null,
+      "message": "Transação já estornada"
+    }
+  ],
+  "url": "/transactions/243899/refund",
+  "method": "post"
+}
