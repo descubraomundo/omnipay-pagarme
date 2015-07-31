@@ -200,6 +200,26 @@ class Gateway extends AbstractGateway
     }
     
     /**
+     * Refund Request
+     *
+     * When you create a new refund, you must specify a
+     * charge to create it on.
+     *
+     * Creating a new refund will refund a charge that has
+     * previously been created but not yet refunded. Funds will
+     * be refunded to the credit or debit card that was originally
+     * charged. The fees you were originally charged are also
+     * refunded.
+     *
+     * @param array $parameters
+     * @return \Omnipay\Stripe\Message\RefundRequest
+     */
+    public function refund(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Pagarme\Message\RefundRequest', $parameters);
+    }
+    
+    /**
      * Fetch Transaction Request
      *
      * @param array $parameters
