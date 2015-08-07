@@ -1,5 +1,5 @@
 {
-    "name": "dmi/omnipay-pagarme",
+    "name": "descubraomundo/omnipay-pagarme",
     "description": "Pagarme driver for the Omnipay payment processing libray",
     "keywords": [
         "gateway",
@@ -9,7 +9,7 @@
         "payment",
         "pagarme"
     ],
-    "homepage": "http://www.descubraomundo.com/",
+    "homepage": "https://github.com/descubraomundo/omnipay-pagarme",
     "require": {
         "omnipay/common": "~2.0"
     },
@@ -20,7 +20,15 @@
     "authors": [
         {
             "name": "Ednei Oliveira",
-            "email": "ednei.oliveira@descubraomundo.com"
+            "email": "leuloch@gmail.com"
+        },
+        {
+            "name": "Gabriel Passarelli",
+            "email": ""
+        },
+        {
+            "name": "Daniel Gallinari",
+            "email": ""
         }
     ],
     "autoload": {
