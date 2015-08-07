@@ -1,0 +1,54 @@
+HTTP/1.1 200 OK
+Server: nginx 
+Date: Fri, 07 Aug 2015 17:15:27 GMT 
+Content-Type: application/json 
+Content-Length: 772 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: chrome-extension://hgmloofddffdnphfgcellkdfbfbjeloo
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 768ms
+Set-Cookie: incap_ses_298_166741=Ljt0V2B7i2nv108HprUiBK/nxFUAAAAAOrdOjJoEWLpPFHpUITzkFQ==; path=/; Domain=.pagar.me 
+X-Iinfo: 0-5204873-5208274 NNNN CT(141 142 0) RT(1438967532811 193813) q(0 0 3 1) r(12 12) U6
+X-CDN: Incapsula
+
+{
+  "object": "transaction",
+  "status": "authorized",
+  "refuse_reason": null,
+  "status_reason": "acquirer",
+  "acquirer_response_code": null,
+  "acquirer_name": "development",
+  "authorization_code": null,
+  "soft_descriptor": null,
+  "tid": null,
+  "nsu": null,
+  "date_created": "2015-08-07T17:15:27.000Z",
+  "date_updated": "2015-08-07T17:15:27.000Z",
+  "amount": 1234,
+  "installments": 1,
+  "id": 247741,
+  "cost": 0,
+  "card_holder_name": null,
+  "card_last_digits": null,
+  "card_first_digits": null,
+  "card_brand": null,
+  "postback_url": null,
+  "payment_method": "boleto",
+  "antifraud_score": null,
+  "boleto_url": null,
+  "boleto_barcode": null,
+  "boleto_expiration_date": "2015-08-14T03:00:00.192Z",
+  "referer": "api_key",
+  "ip": "179.159.56.206",
+  "subscription_id": null,
+  "phone": null,
+  "address": null,
+  "customer": null,
+  "card": null,
+  "metadata": {},
+  "antifraud_metadata": {}
+}

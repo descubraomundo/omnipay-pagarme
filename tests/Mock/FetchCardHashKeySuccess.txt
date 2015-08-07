@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Server: nginx 
+Date: Mon, 03 Aug 2015 16:46:29 GMT 
+Content-Type: application/json 
+Content-Length: 553 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 308ms
+X-Iinfo: 7-30019406-30035874 PNNN RT(1438620151140 237642) q(0 0 0 -1) r(5 5)
+X-CDN: Incapsula
+
+{
+  "date_created": "2015-08-03T16:46:29.000Z",
+  "id": 214106,
+  "ip": "179.159.56.206",
+  "public_key": "-----BEGIN PUBLIC KEY-----aBcDeFgHiJ-----END PUBLIC KEY-----"
+}

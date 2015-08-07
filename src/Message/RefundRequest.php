@@ -9,16 +9,9 @@ namespace Omnipay\Pagarme\Message;
  * Pagarme Refund Request
  *
  * This route is used when you want to reverse a transaction 
- * performed by a charge via credit card or bank transfer. In 
- * case of reversal of a transaction made with a credit card, 
- * only the id of the transaction is required to effect the 
- * reversal.
- * 
- * If the purchase has been made by bank transfer, you need 
- * to pass the bank account information you will receive 
- * the amount reversed, or the id of this account.
- * 
- * 
+ * performed by a charge via credit card. 
+ * In case of reversal a transaction, only the id of the transaction
+ * is required to effect the reversal.
  *
  * Example -- note this example assumes that the purchase has been successful
  * and that the transaction ID returned from the purchase is held in $sale_id.
@@ -54,6 +47,6 @@ class RefundRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->endpoint.'/transactions/'.$this->getTransactionReference().'/refund';
+        return $this->endpoint.'transactions/'.$this->getTransactionReference().'/refund';
     }
 }

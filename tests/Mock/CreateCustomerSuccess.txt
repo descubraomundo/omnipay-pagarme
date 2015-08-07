@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+Server: nginx 
+Date: Tue, 04 Aug 2015 17:02:49 GMT 
+Content-Type: application/json 
+Content-Length: 184 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: chrome-extension://hgmloofddffdnphfgcellkdfbfbjeloo
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 212ms
+Set-Cookie: incap_ses_298_166741=3ceFbjDm3B9qCMe2o7UiBDjwwFUAAAAA7vDUMVlKFYrXv1+WnQuLjQ==; path=/; Domain=.pagar.me 
+X-Iinfo: 6-25293442-25290992 PNNN RT(1438707663572 104672) q(0 0 0 1) r(4 4) U6
+X-CDN: Incapsula
+
+{
+  "object": "customer",
+  "document_number": "21437817840",
+  "document_type": "cpf",
+  "born_at": null,
+  "gender": null,
+  "date_created": "2015-08-04T17:02:49.000Z",
+  "id": 22063,
+  "phones": [],
+  "addresses": []
+}

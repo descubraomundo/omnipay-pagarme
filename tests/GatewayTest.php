@@ -37,22 +37,12 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('10.00', $request->getAmount());
     }
     
-    /**
-     * Refund Request (Estorno de Transação)
-     *
-     *
-     * Creating a new refund will refund a charge that has
-     * previously been created but not yet refunded. Funds will
-     * be refunded to the credit or debit card that was originally
-     * charged. The fees you were originally charged are also
-     * refunded.
-     *
-     * @param array $parameters
-     * @return \Omnipay\Pagarme\Message\RefundRequest
-     */
-    public function refund(array $parameters = array())
+    public function testRefund()
     {
-        return $this->createRequest('\Omnipay\Pagarme\Message\RefundRequest', $parameters);
+        $request = $this->gateway->refund(array('amount' => '10.00'));
+
+        $this->assertInstanceOf('Omnipay\Pagarme\Message\RefundRequest', $request);
+        $this->assertSame('10.00', $request->getAmount());
     }
 
     
@@ -62,5 +52,11 @@ class GatewayTest extends GatewayTestCase
 
         $this->assertInstanceOf('Omnipay\Pagarme\Message\VoidRequest', $request);
     }
+    
+    public function testCreateCustomer()
+    {
+        $request = $this->gateway->createCustomer();
 
+        $this->assertInstanceOf('Omnipay\Pagarme\Message\CreateCustomerRequest', $request);
+    }
 }

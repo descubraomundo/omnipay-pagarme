@@ -6,6 +6,29 @@ use Omnipay\Tests\TestCase;
 
 class ResponseTest extends TestCase
 {
+    public function testPurchaseBoletoSuccess()
+    {
+        $httpResponse = $this->getMockHttpResponse('PurchaseBoletoSuccess.txt');
+        $response = new Response($this->getMockRequest(), $httpResponse->json());
+
+        $data = $response->getBoleto();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
+        $this->assertSame('https://pagar.me', $response->getBoleto()['boleto_url']);
+        $this->assertSame('1234 5678', $response->getBoleto()['boleto_barcode']);
+    }
+    
+    public function testAuthorizeBoletoSuccess()
+    {
+        $httpResponse = $this->getMockHttpResponse('AuthorizeBoletoSuccess.txt');
+        $response = new Response($this->getMockRequest(), $httpResponse->json());
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
+        $this->assertNull($response->getBoleto());
+    }
+    
     public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');

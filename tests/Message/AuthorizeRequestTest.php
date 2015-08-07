@@ -27,6 +27,22 @@ class AuthorizeRequestTest extends TestCase
 
     public function testGetData()
     {
+        $card = array(
+            'firstName' => 'John F',
+            'lastName' => 'Doe',
+            'number' => '4242424242424242',
+            'expiryMonth' => '6',
+            'expiryYear' => '2016',
+            'cvv' => '123',
+            'email' => 'jdoe@example.com',
+            'address1' => 'Rua Alfonso F, 25, Alphaville',
+            'address2' => 'Torre A',
+            'postcode' => '05444040',
+            'phone' => '(019)9 9988-7766',
+            'birthday' => '1988-02-28',
+            'gender' => 'M'
+        );
+        $this->request->setCard($card);
         $data = $this->request->getData();
 
         $this->assertSame(1200, $data['amount']);
@@ -35,6 +51,14 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame(1, $data['installments']);
         $this->assertSame('testeDeApi', $data['soft_descriptor']);
         $this->assertSame(array('name' => 'bar', 'email' => 'foo'), $data['metadata']);
+        $this->assertSame('John F Doe', $data['customer']['name']);
+        $this->assertSame('jdoe@example.com', $data['customer']['email']);
+        $this->assertSame('Rua Alfonso F', $data['customer']['address']['street']);
+        $this->assertSame('05444040', $data['customer']['address']['zipcode']);
+        $this->assertSame('Torre A', $data['customer']['address']['complementary']);
+        $this->assertSame('999887766', $data['customer']['phone']['number']);
+        $this->assertSame('M', $data['customer']['sex']);
+        $this->assertSame('02-28-1988', $data['customer']['born_at']);
         $this->assertSame('false', $data['capture']);
     }
     
@@ -46,6 +70,17 @@ class AuthorizeRequestTest extends TestCase
     {
         $this->request->setCard(null);
         $this->request->getData();
+    }
+    
+    public function testSetBoletoPaymentMethod()
+    {
+        $this->request->setPaymentMethod('boleto');
+        $data = $this->request->getData();
+        
+        $this->assertSame('boleto', $data['payment_method']);
+        $this->assertArrayNotHasKey('card_id', $data);
+        $this->assertArrayNotHasKey('card_hash', $data);
+        $this->assertArrayNotHasKey('card_number', $data);
     }
     
     public function testSendSuccess()
@@ -81,6 +116,11 @@ class AuthorizeRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getCardReference());
         $this->assertSame('api_key inválida', $response->getMessage());
+    }
+    
+    public function testEndpoint()
+    {
+        $this->assertSame('https://api.pagar.me/1/transactions', $this->request->getEndpoint());
     }
     
 }

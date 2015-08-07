@@ -1,0 +1,27 @@
+HTTP/1.1 401 Unauthorized
+Server: nginx 
+Date: Mon, 03 Aug 2015 16:57:18 GMT 
+Content-Type: application/json 
+Content-Length: 189 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 8ms
+X-Iinfo: 4-14108303-14107016 PNNN RT(1438621037177 53) q(0 0 0 -1) r(1 1) U11
+X-CDN: Incapsula
+
+{
+  "errors": [
+    {
+      "type": "action_forbidden",
+      "parameter_name": null,
+      "message": "api_key inválida"
+    }
+  ],
+  "url": "/transactions/card_hash_key?api_key=ak_test_R2j5LAIqqxBZWLfy9yU03dSJbqY6G",
+  "method": "get"
+}

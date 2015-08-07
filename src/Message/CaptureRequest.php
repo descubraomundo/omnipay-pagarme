@@ -18,7 +18,7 @@ namespace Omnipay\Pagarme\Message;
  *   $response = $transaction->send();
  * </code>
  *
- * @see AuthorizeRequest
+ * @see Omnipay\Pagarme\Message\AuthorizeRequest
  */
 class CaptureRequest extends AbstractRequest
 {
@@ -29,8 +29,9 @@ class CaptureRequest extends AbstractRequest
      
         return $data;
     }
+    
     public function getEndpoint()
     {
-        return $this->endpoint.'/transactions/'.$this->getTransactionReference().'/capture';
+        return $this->endpoint.'transactions/'.$this->getTransactionReference().'/capture';
     }
 }

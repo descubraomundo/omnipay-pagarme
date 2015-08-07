@@ -9,7 +9,7 @@ use Omnipay\Common\Message\AbstractResponse;
  *
  * This is the response class for all Pagarme requests.
  *
- * @see \Omnipay\PAgarme\Gateway
+ * @see \Omnipay\Pagarme\Gateway
  */
 class Response extends AbstractResponse
 {
@@ -62,6 +62,30 @@ class Response extends AbstractResponse
     }
     
     /**
+     * Get a customer reference, for createCustomer requests.
+     *
+     * @return string|null
+     */
+    public function getCustomerReference()
+    {
+        if (isset($this->data['object']) && 'customer' === $this->data['object']) {
+            return $this->data['id'];
+        }
+        if (isset($this->data['object']) && 'transaction' === $this->data['object']) {
+            if (! empty($this->data['customer'])) {
+                return $this->data['customer']['id'];
+            }
+        }
+        if (isset($this->data['object']) && 'card' === $this->data['object']) {
+            if (! empty($this->data['customer'])) {
+                return $this->data['customer']['id'];
+            }
+        }
+
+        return null;
+    }
+    
+    /**
      * Get the error message from the response.
      *
      * Returns null if the request was successful.
@@ -80,6 +104,28 @@ class Response extends AbstractResponse
 
         return null;
     }
-
-
+    
+    /**
+     * Get the boleto_url and boleto_barcode in the
+     * transaction object.
+     * 
+     * @return array|null boleto_url and boleto_barcode
+     */
+    public function getBoleto()
+    {
+        if (isset($this->data['object']) && 'transaction' === $this->data['object']) {
+            if ( $this->data['boleto_url'] ) {
+                $data = array(
+                    'boleto_url' => $this->data['boleto_url'], 
+                    'boleto_barcode' => $this->data['boleto_barcode'],
+                    'boleto_expiration_date' => $this->data['boleto_expiration_date'],
+                );
+                return $data;
+            } else {
+                return null;
+            }
+        }
+        
+        return null;
+    }
 }

@@ -1,0 +1,31 @@
+HTTP/1.1 200 OK
+Server: nginx 
+Date: Tue, 04 Aug 2015 12:15:14 GMT 
+Content-Type: application/json 
+Content-Length: 300 
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: chrome-extension://hgmloofddffdnphfgcellkdfbfbjeloo
+Charset: utf-8
+X-Powered-By: Express
+X-Response-Time: 557ms
+Set-Cookie: incap_ses_298_166741=JCmzJ1WJk28jO3m2o7UiBNGswFUAAAAAUCeT+wrxwPyBGqOT3gqU8Q==; path=/; Domain=.pagar.me 
+X-Iinfo: 8-47553323-47553329 NNNN CT(142 143 0) RT(1438690512950 49) q(0 1 3 2) r(10 10) U6
+X-CDN: Incapsula
+
+{
+  "object": "card",
+  "id": "card_cicxb6pf700pvj96du2bo8zaj",
+  "date_created": "2015-08-04T12:15:14.000Z",
+  "date_updated": "2015-08-04T12:15:14.000Z",
+  "brand": "visa",
+  "holder_name": "Test Client",
+  "first_digits": "401872",
+  "last_digits": "8048",
+  "country": "RU",
+  "fingerprint": "Jl9oOIiDjAjR",
+  "customer": null,
+  "valid": true
+}
