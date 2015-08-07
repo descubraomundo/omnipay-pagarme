@@ -22,14 +22,6 @@
         {
             "name": "Ednei Oliveira",
             "email": "leuloch@gmail.com"
-        },
-        {
-            "name": "Gabriel Passarelli",
-            "email": ""
-        },
-        {
-            "name": "Daniel Gallinari",
-            "email": ""
         }
     ],
     "autoload": {
