@@ -15,8 +15,8 @@ class ResponseTest extends TestCase
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
-        $this->assertSame('https://pagar.me', $response->getBoleto()['boleto_url']);
-        $this->assertSame('1234 5678', $response->getBoleto()['boleto_barcode']);
+        $this->assertSame('https://pagar.me', $data['boleto_url']);
+        $this->assertSame('1234 5678', $data['boleto_barcode']);
     }
     
     public function testAuthorizeBoletoSuccess()
