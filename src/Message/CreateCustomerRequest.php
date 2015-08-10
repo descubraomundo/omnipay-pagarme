@@ -110,7 +110,8 @@ class CreateCustomerRequest extends AbstractRequest
         $data = array();
         
         if ( $this->getCard() ) {
-            $data = $this->getCustomerData()['customer'];
+            $customer = $this->getCustomerData();
+            $data = $customer['customer'];
             if ( isset($data['address']) ) {
                 $data['address']['city'] = $this->getCard()->getCity();
                 $data['address']['state'] = $this->getCard()->getState();
