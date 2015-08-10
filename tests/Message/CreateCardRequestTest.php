@@ -37,11 +37,22 @@ class CreateCardRequestTest extends TestCase
             'expiryYear' => '2016',
         );
         $this->request->setCard($card);
+        $this->request->setCustomerReference(123456);
         $data = $this->request->getData();
 
         $this->assertSame('4111111111111111', $data['card_number']);
         $this->assertSame('012016', $data['card_expiration_date']);
         $this->assertSame('Foo Bar', $data['card_holder_name']);
+        $this->assertSame(123456, $data['customer_id']);
+    }
+    
+    public function testDataWithCardHash()
+    {
+        $this->request->setCard(null);
+        $this->request->setCardHash('card_1111');
+        $data = $this->request->getData();
+        
+        $this->assertSame('card_1111', $data['card_hash']);
     }
 
     public function testSendSuccess()
@@ -53,6 +64,7 @@ class CreateCardRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getTransactionReference());
         $this->assertSame('card_cicxb6pf700pvj96du2bo8zaj', $response->getCardReference());
+        $this->assertSame(22382, $response->getCustomerReference());
         $this->assertNull($response->getMessage());
     }
 
@@ -65,6 +77,7 @@ class CreateCardRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getTransactionReference());
         $this->assertNull($response->getCardReference());
+        $this->assertNull($response->getCustomerReference());
         $this->assertSame('Data de expiração inválida', $response->getMessage());
     }
 }

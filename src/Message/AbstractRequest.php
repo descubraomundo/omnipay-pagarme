@@ -79,7 +79,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
      */
     public function setCardHash($value)
     {
-        return $this->setParameter('customerReference', $value);
+        return $this->setParameter('card_hash', $value);
     }
     
     /**

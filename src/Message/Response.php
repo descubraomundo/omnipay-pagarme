@@ -36,9 +36,6 @@ class Response extends AbstractResponse
         if (isset($this->data['object']) && 'transaction' === $this->data['object']) {
             return $this->data['id'];
         }
-        if (isset($this->data['errors']) && isset($this->data['errors']['id'])) {
-            return $this->data['errors']['id'];
-        }
 
         return null;
     }

@@ -72,6 +72,14 @@ class AuthorizeRequestTest extends TestCase
         $this->request->getData();
     }
     
+    public function testSetBoletoExpirationDate()
+    {
+        $this->request->setPaymentMethod('boleto');
+        $this->request->setBoletoExpirationDate('2 august 2015');
+        
+        $this->assertSame('2015-08-02', $this->request->getBoletoExpirationDate());
+    }
+    
     public function testSetBoletoPaymentMethod()
     {
         $this->request->setPaymentMethod('boleto');

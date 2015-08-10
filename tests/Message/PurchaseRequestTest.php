@@ -33,6 +33,8 @@ class PurchaseRequestTest extends TestCase
         $this->assertFalse($response->isRedirect());
         $this->assertSame(184220, $response->getTransactionReference());
         $this->assertSame('card_ci6l9fx8f0042rt16rtb477gj', $response->getCardReference());
+        $this->assertSame(22382, $response->getCustomerReference());
+        $this->assertNull($response->getBoleto());
         $this->assertNull($response->getMessage());
     }
 

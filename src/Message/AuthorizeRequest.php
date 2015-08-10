@@ -180,7 +180,7 @@ class AuthorizeRequest extends AbstractRequest
     public function setBoletoExpirationDate($value)
     {
         if ($value) {
-            $value = new DateTime($value, new DateTimeZone('UTC'));
+            $value = new \DateTime($value, new \DateTimeZone('UTC'));
         } else {
             $value = null;
         }

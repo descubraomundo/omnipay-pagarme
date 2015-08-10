@@ -44,7 +44,17 @@ X-CDN: Incapsula
   "subscription_id": null,
   "phone": null,
   "address": null,
-  "customer": null,
+  "customer": {
+    "object": "customer",
+    "document_number": null,
+    "document_type": "cpf",
+    "name": "Foo",
+    "email": "bar@example.com",
+    "born_at": null,
+    "gender": null,
+    "date_created": "2015-08-10T14:46:04.000Z",
+    "id": 22382
+  },
   "card": {
     "object": "card",
     "id": "card_ci6l9fx8f0042rt16rtb477gj",

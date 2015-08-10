@@ -26,6 +26,16 @@ X-CDN: Incapsula
   "last_digits": "8048",
   "country": "RU",
   "fingerprint": "Jl9oOIiDjAjR",
-  "customer": null,
+  "customer": {
+    "object": "customer",
+    "document_number": null,
+    "document_type": "cpf",
+    "name": "Foo",
+    "email": "bar@example.com",
+    "born_at": null,
+    "gender": null,
+    "date_created": "2015-08-10T14:46:04.000Z",
+    "id": 22382
+  },
   "valid": true
 }
