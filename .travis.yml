@@ -7,10 +7,6 @@ php:
   - 5.6
   - hhvm
 
-addons:
-  codeclimate:
-    repo_token: f62119845c9fc64288f7b0b9900975f1000d8ec19f8f996b235671476f276d2f
-
 before_script:
   - composer install -n --dev --prefer-source
 
