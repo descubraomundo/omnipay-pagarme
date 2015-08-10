@@ -22,7 +22,6 @@ namespace Omnipay\Pagarme\Message;
  * * credit_card
  * * boleto
  * 
- * @see https://docs.pagar.me/capturing-card-data/
  * 
  * Optionally, you can provide the customer details to use the antifraude
  * feature. These details is passed using the following attributes available
@@ -84,6 +83,7 @@ namespace Omnipay\Pagarme\Message;
  *   }
  * </code>
  *
+ * @see https://docs.pagar.me/capturing-card-data/
  * @see \Omnipay\Pagarme\Gateway
  * @see \Omnipay\Pagarme\Message\CaptureRequest
  * @link https://docs.pagar.me/api/?shell#objeto-transaction
