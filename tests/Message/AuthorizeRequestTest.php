@@ -82,10 +82,21 @@ class AuthorizeRequestTest extends TestCase
     
     public function testSetBoletoPaymentMethod()
     {
+        $this->request->initialize(
+            array(
+                'amount' => '12.50',
+                'card'   => array(
+                    'name' => 'John Doe',
+                    'email' => 'johndoe@example.com',
+                )
+            )
+        );
         $this->request->setPaymentMethod('boleto');
         $data = $this->request->getData();
         
         $this->assertSame('boleto', $data['payment_method']);
+        $this->assertSame('John Doe', $data['customer']['name']);
+        $this->assertSame('johndoe@example.com', $data['customer']['email']);
         $this->assertArrayNotHasKey('card_id', $data);
         $this->assertArrayNotHasKey('card_hash', $data);
         $this->assertArrayNotHasKey('card_number', $data);

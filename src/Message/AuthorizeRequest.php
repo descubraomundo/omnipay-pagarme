@@ -205,6 +205,9 @@ class AuthorizeRequest extends AbstractRequest
                 $data['boleto_expiration_date'] = $this->getBoletoExpirationDate();
             }
             $data['payment_method'] = $this->getPaymentMethod();
+            if ( $this->getCard() ) {
+                $data = array_merge($data, $this->getCustomerData());
+            }
         } else {
             if ( $this->getCard() ) {
                 $data = array_merge($data, $this->getCardData(), $this->getCustomerData());
