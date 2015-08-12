@@ -164,7 +164,7 @@ class AuthorizeRequest extends AbstractRequest
      * 
      * @return string boleto expiration date
      */
-    public function getBoletoExpirationDate($format = 'Y-m-d')
+    public function getBoletoExpirationDate($format = 'Y-m-d\TH:i:s')
     {
         $value = $this->getParameter('boleto_expiration_date');
         
@@ -181,6 +181,7 @@ class AuthorizeRequest extends AbstractRequest
     {
         if ($value) {
             $value = new \DateTime($value, new \DateTimeZone('UTC'));
+            $value = new \DateTime($value->format('Y-m-d\T03:00:00'), new \DateTimeZone('UTC'));
         } else {
             $value = null;
         }
