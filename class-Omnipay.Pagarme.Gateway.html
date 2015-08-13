@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Omnipay\Pagarme\Gateway</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-Omnipay.Pagarme.html" title="Summary of Omnipay\Pagarme"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Omnipay.html">
+							Omnipay<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-Omnipay.Pagarme.html">
+							Pagarme<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Omnipay.Pagarme.Message.html">
+							Message						</a>
+							</li>
+								</ul></li></ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Omnipay.Pagarme.Gateway.html">Gateway</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Gateway</h1>
+
+
+	<div class="description">
+	<p>Pagarme Gateway</p>
+
+<p>Example:</p>
+
+<pre><span class="php-comment">// Create a gateway for the Pagarme Gateway</span>
+  <span class="php-comment">// (routes to GatewayFactory::create)</span>
+  <span class="php-var">$gateway</span> = Omnipay::create(<span class="php-quote">'Pagarme'</span>);
+
+  <span class="php-comment">// Initialise the gateway</span>
+  <span class="php-var">$gateway</span>-&gt;initialize(<span class="php-keyword1">array</span>(
+      <span class="php-quote">'apiKey'</span> =&gt; <span class="php-quote">'MyApiKey'</span>,
+  ));
+
+  <span class="php-comment">// Create a credit card object</span>
+  <span class="php-comment">// This card can be used for testing.</span>
+  <span class="php-var">$card</span> = <span class="php-keyword1">new</span> CreditCard(<span class="php-keyword1">array</span>(
+              <span class="php-quote">'firstName'</span>    =&gt; <span class="php-quote">'Example'</span>,
+              <span class="php-quote">'lastName'</span>     =&gt; <span class="php-quote">'Customer'</span>,
+              <span class="php-quote">'number'</span>       =&gt; <span class="php-quote">'4242424242424242'</span>,
+              <span class="php-quote">'expiryMonth'</span>  =&gt; <span class="php-quote">'01'</span>,
+              <span class="php-quote">'expiryYear'</span>   =&gt; <span class="php-quote">'2020'</span>,
+              <span class="php-quote">'cvv'</span>          =&gt; <span class="php-quote">'123'</span>,
+              <span class="php-quote">'email'</span>        =&gt; <span class="php-quote">'customer@example.com'</span>,
+              <span class="php-quote">'address1'</span>     =&gt; <span class="php-quote">'Street name, Street number, Neighborhood'</span>,
+              <span class="php-quote">'address2'</span>     =&gt; <span class="php-quote">'address complementary'</span>,
+              <span class="php-quote">'postcode'</span>     =&gt; <span class="php-quote">'05443100'</span>,
+              <span class="php-quote">'phone'</span>        =&gt; <span class="php-quote">'19 3242 8855'</span>,
+  ));
+
+  <span class="php-comment">// Do an authorize transaction on the gateway</span>
+  <span class="php-var">$transaction</span> = <span class="php-var">$gateway</span>-&gt;authorize(<span class="php-keyword1">array</span>(
+      <span class="php-quote">'amount'</span>           =&gt; <span class="php-quote">'10.00'</span>,
+      <span class="php-quote">'soft_descriptor'</span>  =&gt; <span class="php-quote">'test'</span>,
+      <span class="php-quote">'payment_method'</span>   =&gt; <span class="php-quote">'credit_card'</span>,
+      <span class="php-quote">'card'</span>             =&gt; <span class="php-var">$card</span>,
+      <span class="php-quote">'metadata'</span>         =&gt; <span class="php-keyword1">array</span>(
+                                <span class="php-quote">'product_id'</span> =&gt; <span class="php-quote">'ID1111'</span>,
+                                <span class="php-quote">'invoice_id'</span> =&gt; <span class="php-quote">'IV2222'</span>,
+                            ),
+  ));
+  <span class="php-var">$response</span> = <span class="php-var">$transaction</span>-&gt;send();
+  <span class="php-keyword1">if</span> (<span class="php-var">$response</span>-&gt;isSuccessful()) {
+      <span class="php-keyword1">echo</span> <span class="php-quote">&quot;Authorize transaction was successful!\n&quot;</span>;
+      <span class="php-var">$sale_id</span> = <span class="php-var">$response</span>-&gt;getTransactionReference();
+      <span class="php-var">$customer_id</span> = <span class="php-var">$response</span>-&gt;getCustomerReference();
+      <span class="php-var">$card_id</span> = <span class="php-var">$response</span>-&gt;getCardReference();
+      <span class="php-keyword1">echo</span> <span class="php-quote">&quot;Transaction reference = &quot;</span> . <span class="php-var">$sale_id</span> . <span class="php-quote">&quot;\n&quot;</span>;
+  }</pre>
+
+<p>Test modes:</p>
+
+<p>Pagarme accounts have test-mode API keys as well as live-mode
+API keys. Data created with test-mode credentials will never
+hit the credit card networks and will never cost anyone money.</p>
+
+<p>Unlike some gateways, there is no test mode endpoint separate
+to the live mode endpoint, the Pagarme API endpoint is the same
+for test and for live.</p>
+
+<p>Setting the testMode flag on this gateway has no effect.  To
+use test mode just use your test mode API key.</p>
+
+<p>Authentication:</p>
+
+<p>Authentication is by means of a single secret API key set as
+the apiKey parameter when creating the gateway object.</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+Omnipay\Common\AbstractGateway
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Omnipay\Pagarme\Gateway</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Omnipay.html">Omnipay</a>\<a href="namespace-Omnipay.Pagarme.html">Pagarme</a><br>
+		
+
+				<b>See:</b>
+				\Omnipay\Common\AbstractGateway<br>
+				<b>See:</b>
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html">Omnipay\Pagarme\Message\AbstractRequest</a></code><br>
+				<b>Link:</b>
+				<a href="https://docs.pagar.me/">https://docs.pagar.me/</a><br>
+			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Gateway.html#7-289" title="Go to source code">Gateway.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="getName" id="_getName">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getName">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#83-86" title="Go to source code">getName</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getDefaultParameters" id="_getDefaultParameters">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getDefaultParameters">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#88-98" title="Go to source code">getDefaultParameters</a>( )</code>
+
+			<div class="description short">
+				<p>Get the gateway parameters</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Get the gateway parameters</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getApiKey" id="_getApiKey">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getApiKey">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#100-111" title="Go to source code">getApiKey</a>( )</code>
+
+			<div class="description short">
+				<p>Get the gateway API Key</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Get the gateway API Key</p>
+
+<p>Authentication is by means of a single secret API key set as
+the apiKey parameter when creating the gateway object.</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setApiKey" id="_setApiKey">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Gateway.html">Omnipay\Pagarme\Gateway</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setApiKey">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#113-136" title="Go to source code">setApiKey</a>( <span>string <var>$value</var></span> )</code>
+
+			<div class="description short">
+				<p>Set the gateway API Key</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set the gateway API Key</p>
+
+<p>Authentication is by means of a single secret API key set as
+the apiKey parameter when creating the gateway object.</p>
+
+<p>Pagarme accounts have test-mode API keys as well as live-mode
+API keys. Data created with test-mode credentials will never
+hit the credit card networks and will never cost anyone money.</p>
+
+<p>Unlike some gateways, there is no test mode endpoint separate
+to the live mode endpoint, the Stripe API endpoint is the same
+for test and for live.</p>
+
+<p>Setting the testMode flag on this gateway has no effect.  To
+use test mode just use your test mode API key.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$value</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Gateway.html">Omnipay\Pagarme\Gateway</a></code><br>provides a fluent interface.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="authorize" id="_authorize">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html">Omnipay\Pagarme\Message\AuthorizeRequest</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_authorize">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#138-172" title="Go to source code">authorize</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Authorize Request</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Authorize Request</p>
+
+<p>An Authorize request is similar to a purchase request but the
+charge issues an authorization (or pre-authorization), and no money
+is transferred.  The transaction will need to be captured later
+in order to effect payment. Uncaptured charges expire in 5 days.</p>
+
+<p>Either a card object or card_id is required by default. Otherwise,
+you must provide a card_hash, like the ones returned by Pagarme.js
+or use the boleto's payment method.</p>
+
+<p>Pagarme gateway supports only two types of "payment_method":</p>
+
+<ul>
+<li>credit_card</li>
+<li>boleto</li>
+</ul>
+
+<p>Optionally, you can provide the customer details to use the antifraude
+feature. These details is passed using the following attributes available
+on credit card object:</p>
+
+<ul>
+<li>firstName</li>
+<li>lastName</li>
+<li>address1 (must be in the format "street, street_number and neighborhood")</li>
+<li>address2 (used to specify the optional parameter "street_complementary")</li>
+<li>postcode</li>
+<li>phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")</li>
+</ul>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$parameters</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html">Omnipay\Pagarme\Message\AuthorizeRequest</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="capture" id="_capture">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Message.CaptureRequest.html">Omnipay\Pagarme\Message\CaptureRequest</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_capture">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#174-185" title="Go to source code">capture</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Capture Request</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Capture Request</p>
+
+<p>Use this request to capture and process a previously created authorization.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$parameters</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Message.CaptureRequest.html">Omnipay\Pagarme\Message\CaptureRequest</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="purchase" id="_purchase">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Message.PurchaseRequest.html">Omnipay\Pagarme\Message\PurchaseRequest</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_purchase">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#187-222" title="Go to source code">purchase</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Purchase request.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Purchase request.</p>
+
+<p>To charge a credit card or generate a boleto you create a new transaction
+object. If your API key is in test mode, the supplied card won't actually
+be charged, though everything else will occur as if in live mode.</p>
+
+<p>Either a card object or card_id is required by default. Otherwise,
+you must provide a card_hash, like the ones returned by Pagarme.js
+or use the boleto's payment method.</p>
+
+<p>Pagarme gateway supports only two types of "payment_method":</p>
+
+<ul>
+<li>credit_card</li>
+<li>boleto</li>
+</ul>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$parameters</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Message.PurchaseRequest.html">Omnipay\Pagarme\Message\PurchaseRequest</a></code>
+					</div>
+
+
+					<h4>See</h4>
+					<div class="list">
+							<p>https://docs.pagar.me/capturing-card-data/</p>
+
+<p>Optionally</p>, <p>you can provide the customer details to use the antifraude
+feature. These details is passed using the following attributes available
+on credit card object:</p>
+
+<ul>
+<li>firstName</li>
+<li>lastName</li>
+<li>address1 (must be in the format "street</li>
+</ul>, <p>street_number and neighborhood")
+* address2 (used to specify the optional parameter "street_complementary")
+* postcode
+* phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")</p><br>
+					</div>
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="refund" id="_refund">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Message.RefundRequest.html">Omnipay\Pagarme\Message\RefundRequest</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_refund">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#224-239" title="Go to source code">refund</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Refund Request</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Refund Request</p>
+
+<p>When you refund, you must specify a transaction reference.</p>
+
+<p>Creating a new refund will refund a transaction that has
+previously been created but not yet charged. Funds will
+be refunded to the credit that was originally authorized.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$parameters</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Message.RefundRequest.html">Omnipay\Pagarme\Message\RefundRequest</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="void" id="_void">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Message.VoidRequest.html">Omnipay\Pagarme\Message\VoidRequest</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_void">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#241-255" title="Go to source code">void</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Void Transaction Request</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Void Transaction Request</p>
+
+<p>Pagarme does not support voiding, per se, but
+we treat it as a full refund.</p>
+
+<p>See RefundRequest for additional information</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$parameters</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Message.VoidRequest.html">Omnipay\Pagarme\Message\VoidRequest</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="createCard" id="_createCard">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Message.CreateCardRequest.html">Omnipay\Pagarme\Message\CreateCardRequest</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_createCard">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#257-273" title="Go to source code">createCard</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Create Card</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Create Card</p>
+
+<p>This call can be used to create a new credit card.
+If a customerReference is passed in then
+a card is added to an existing customer.  If there is no
+customerReference passed in then a new customer is created.  The
+response in that case will then contain both a customer reference
+and a card reference, and is essentially the same as CreateCustomerRequest</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$parameters</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Message.CreateCardRequest.html">Omnipay\Pagarme\Message\CreateCardRequest</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="createCustomer" id="_createCustomer">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.Message.CreateCustomerRequest.html">Omnipay\Pagarme\Message\CreateCustomerRequest</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_createCustomer">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#275-288" title="Go to source code">createCustomer</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Create Customer</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Create Customer</p>
+
+<p>Customer objects allow you to perform recurring charges and
+track multiple charges that are associated with the same customer.
+The API allows you to create customers.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$parameters</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.Message.CreateCustomerRequest.html">Omnipay\Pagarme\Message\CreateCustomerRequest</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

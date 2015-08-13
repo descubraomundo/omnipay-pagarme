@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Omnipay\Pagarme\Message\PurchaseRequest</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-Omnipay.Pagarme.Message.html" title="Summary of Omnipay\Pagarme\Message"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Omnipay.html">
+							Omnipay<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-Omnipay.Pagarme.html">
+							Pagarme<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-Omnipay.Pagarme.Message.html">
+							Message						</a>
+							</li>
+								</ul></li></ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html">AbstractRequest</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html">AuthorizeRequest</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.CaptureRequest.html">CaptureRequest</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.CreateCardRequest.html">CreateCardRequest</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.CreateCustomerRequest.html">CreateCustomerRequest</a></li>
+				<li class="active"><a href="class-Omnipay.Pagarme.Message.PurchaseRequest.html">PurchaseRequest</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.RefundRequest.html">RefundRequest</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.Response.html">Response</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.VoidRequest.html">VoidRequest</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class PurchaseRequest</h1>
+
+
+	<div class="description">
+	<p>Pagarme Authorize Request</p>
+
+<p>An Authorize request is similar to a purchase request but the
+charge issues an authorization (or pre-authorization), and no money
+is transferred.  The transaction will need to be captured later
+in order to effect payment. Uncaptured transactions expire in 5 days.</p>
+
+<p>Either a card object or card_id is required by default. Otherwise,
+you must provide a card_hash, like the ones returned by Pagarme.js
+or use the boleto's payment method.</p>
+
+<p>Pagarme gateway supports only two types of "payment_method":</p>
+
+<ul>
+<li>credit_card</li>
+<li>boleto</li>
+</ul>
+
+<p>Optionally, you can provide the customer details to use the antifraude
+feature. These details is passed using the following attributes available
+on credit card object:</p>
+
+<ul>
+<li>firstName</li>
+<li>lastName</li>
+<li>address1 (must be in the format "street, street_number and neighborhood")</li>
+<li>address2 (used to specify the optional parameter "street_complementary")</li>
+<li>postcode</li>
+<li>phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")</li>
+</ul>
+
+<p>Example:</p>
+
+<pre><span class="php-comment">// Create a gateway for the Pagarme Gateway</span>
+  <span class="php-comment">// (routes to GatewayFactory::create)</span>
+  <span class="php-var">$gateway</span> = Omnipay::create(<span class="php-quote">'Pagarme'</span>);
+
+  <span class="php-comment">// Initialise the gateway</span>
+  <span class="php-var">$gateway</span>-&gt;initialize(<span class="php-keyword1">array</span>(
+      <span class="php-quote">'apiKey'</span> =&gt; <span class="php-quote">'MyApiKey'</span>,
+  ));
+
+  <span class="php-comment">// Create a credit card object</span>
+  <span class="php-comment">// This card can be used for testing.</span>
+  <span class="php-var">$card</span> = <span class="php-keyword1">new</span> CreditCard(<span class="php-keyword1">array</span>(
+              <span class="php-quote">'firstName'</span>    =&gt; <span class="php-quote">'Example'</span>,
+              <span class="php-quote">'lastName'</span>     =&gt; <span class="php-quote">'Customer'</span>,
+              <span class="php-quote">'number'</span>       =&gt; <span class="php-quote">'4242424242424242'</span>,
+              <span class="php-quote">'expiryMonth'</span>  =&gt; <span class="php-quote">'01'</span>,
+              <span class="php-quote">'expiryYear'</span>   =&gt; <span class="php-quote">'2020'</span>,
+              <span class="php-quote">'cvv'</span>          =&gt; <span class="php-quote">'123'</span>,
+              <span class="php-quote">'email'</span>        =&gt; <span class="php-quote">'customer@example.com'</span>,
+              <span class="php-quote">'address1'</span>     =&gt; <span class="php-quote">'Street name, Street number, Neighborhood'</span>,
+              <span class="php-quote">'address2'</span>     =&gt; <span class="php-quote">'address complementary'</span>,
+              <span class="php-quote">'postcode'</span>     =&gt; <span class="php-quote">'05443100'</span>,
+              <span class="php-quote">'phone'</span>        =&gt; <span class="php-quote">'19 3242 8855'</span>,
+  ));
+
+  <span class="php-comment">// Do an authorize transaction on the gateway</span>
+  <span class="php-var">$transaction</span> = <span class="php-var">$gateway</span>-&gt;authorize(<span class="php-keyword1">array</span>(
+      <span class="php-quote">'amount'</span>           =&gt; <span class="php-quote">'10.00'</span>,
+      <span class="php-quote">'soft_descriptor'</span>  =&gt; <span class="php-quote">'test'</span>,
+      <span class="php-quote">'payment_method'</span>   =&gt; <span class="php-quote">'credit_card'</span>,
+      <span class="php-quote">'card'</span>             =&gt; <span class="php-var">$card</span>,
+      <span class="php-quote">'metadata'</span>         =&gt; <span class="php-keyword1">array</span>(
+                                <span class="php-quote">'product_id'</span> =&gt; <span class="php-quote">'ID1111'</span>,
+                                <span class="php-quote">'invoice_id'</span> =&gt; <span class="php-quote">'IV2222'</span>,
+                            ),
+  ));
+  <span class="php-var">$response</span> = <span class="php-var">$transaction</span>-&gt;send();
+  <span class="php-keyword1">if</span> (<span class="php-var">$response</span>-&gt;isSuccessful()) {
+      <span class="php-keyword1">echo</span> <span class="php-quote">&quot;Authorize transaction was successful!\n&quot;</span>;
+      <span class="php-var">$sale_id</span> = <span class="php-var">$response</span>-&gt;getTransactionReference();
+      <span class="php-var">$customer_id</span> = <span class="php-var">$response</span>-&gt;getCustomerReference();
+      <span class="php-var">$card_id</span> = <span class="php-var">$response</span>-&gt;getCardReference();
+      <span class="php-keyword1">echo</span> <span class="php-quote">&quot;Transaction reference = &quot;</span> . <span class="php-var">$sale_id</span> . <span class="php-quote">&quot;\n&quot;</span>;
+  }</pre>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+Omnipay\Common\Message\AbstractRequest
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+			<a href="class-Omnipay.Pagarme.Message.AbstractRequest.html"><span>Omnipay\Pagarme\Message\AbstractRequest</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by">
+			<a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html"><span>Omnipay\Pagarme\Message\AuthorizeRequest</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Omnipay\Pagarme\Message\PurchaseRequest</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Omnipay.html">Omnipay</a>\<a href="namespace-Omnipay.Pagarme.html">Pagarme</a>\<a href="namespace-Omnipay.Pagarme.Message.html">Message</a><br>
+		
+
+				<b>See:</b>
+				https://docs.pagar.me/capturing-card-data/<br>
+				<b>See:</b>
+				<code><a href="class-Omnipay.Pagarme.Gateway.html">Omnipay\Pagarme\Gateway</a></code><br>
+				<b>See:</b>
+				<code><a href="class-Omnipay.Pagarme.Message.CaptureRequest.html">Omnipay\Pagarme\Message\CaptureRequest</a></code><br>
+				<b>Link:</b>
+				<a href="https://docs.pagar.me/api/?shell#objeto-transaction">https://docs.pagar.me/api/?shell#objeto-transaction</a><br>
+			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Message.PurchaseRequest.html#5-98" title="Go to source code">Message/PurchaseRequest.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="getData" id="_getData">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getData">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.Message.PurchaseRequest.html#7-97" title="Go to source code">getData</a>( )</code>
+
+			<div class="description short">
+				<p>Pagarme Purchase Request</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Pagarme Purchase Request</p>
+
+<p>To charge a credit card or generate a boleto you create a new transaction
+object. If your API key is in test mode, the supplied card won't actually
+be charged, though everything else will occur as if in live mode.</p>
+
+<p>Either a card object or card_id is required by default. Otherwise,
+you must provide a card_hash, like the ones returned by Pagarme.js
+or use the boleto's payment method.</p>
+
+<p>Pagarme gateway supports only two types of "payment_method":</p>
+
+<ul>
+<li>credit_card</li>
+<li>boleto</li>
+</ul>
+
+
+
+
+
+					<h4>See</h4>
+					<div class="list">
+							<p>https://docs.pagar.me/capturing-card-data/</p>
+
+<p>Optionally</p>, <p>you can provide the customer details to use the antifraude
+feature. These details is passed using the following attributes available
+on credit card object:</p>
+
+<ul>
+<li>firstName</li>
+<li>lastName</li>
+<li>address1 (must be in the format "street</li>
+</ul>, <p>street_number and neighborhood")
+* address2 (used to specify the optional parameter "street_complementary")
+* postcode
+* phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")</p>
+
+<p>Example:</p>
+
+<p><code>
+  // Create a gateway for the Pagarme Gateway
+  // (routes to GatewayFactory::create)
+  $gateway = Omnipay::create('Pagarme');</p>
+
+<p>// Initialise the gateway
+  $gateway->initialize(array(
+      'apiKey' => 'MyApiKey'</p>, <p>));</p>
+
+<p>// Create a credit card object
+  // This card can be used for testing.
+  $card = new CreditCard(array(
+              'firstName'    => 'Example'</p>, 'lastName'     => 'Customer', 'number'       => '4242424242424242', 'expiryMonth'  => '01', 'expiryYear'   => '2020', 'cvv'          => '123', 'email'        => 'customer@example.com', 'address1'     => 'Street name, Street number, Neighborhood', 'address2'     => 'address complementary', 'postcode'     => '05443100', 'phone'        => '19 3242 8855', <p>));</p>
+
+<p>// Do a purchase transaction on the gateway
+  $transaction = $gateway->purchase(array(
+      'amount'           => '10.00'</p>, 'soft_descriptor'  => 'test', 'payment_method'   => 'credit_card', 'card'             => $card, <p>'metadata'         => array(
+                                'product_id' => 'ID1111'</p>, 'invoice_id' => 'IV2222', ), <p>));
+  $response = $transaction->send();
+  if ($response->isSuccessful()) {
+      echo "Purchase transaction was successful!\n";
+      $sale_id = $response->getTransactionReference();
+      $customer_id = $response->getCustomerReference();
+      $card_id = $response->getCardReference();
+      echo "Transaction reference = " . $sale_id . "\n";
+  }
+</code></p>
+
+<p>Because a purchase request in Pagarme looks similar to an
+Authorize request</p>, <p>this class simply extends the AuthorizeRequest
+class and over-rides the getData method setting capture = true.</p><br>
+							<code><a href="class-Omnipay.Pagarme.Gateway.html">Omnipay\Pagarme\Gateway</a></code><br>
+					</div>
+					<h4>Link</h4>
+					<div class="list">
+							<a href="https://docs.pagar.me/api/?shell#criando-uma-transao">https://docs.pagar.me/api/?shell#criando-uma-transao</a><br>
+					</div>
+
+					<h4>Overrides</h4>
+					<div class="list"><code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_getData">Omnipay\Pagarme\Message\AuthorizeRequest::getData</a></code></div>
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#methods">Omnipay\Pagarme\Message\AuthorizeRequest</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_getBoletoExpirationDate">getBoletoExpirationDate()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_getEndpoint">getEndpoint()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_getInstallments">getInstallments()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_getPostbackUrl">getPostbackUrl()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_getSoftDescriptor">getSoftDescriptor()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_setBoletoExpirationDate">setBoletoExpirationDate()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_setInstallments">setInstallments()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_setPostbackUrl">setPostbackUrl()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AuthorizeRequest.html#_setSoftDescriptor">setSoftDescriptor()</a></code>
+			</p>
+		</div>
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#methods">Omnipay\Pagarme\Message\AbstractRequest</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_createResponse">createResponse()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractAddress">extractAddress()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractDddPhone">extractDddPhone()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getApiKey">getApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardData">getCardData()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardHash">getCardHash()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCustomerData">getCustomerData()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCustomerReference">getCustomerReference()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getHttpMethod">getHttpMethod()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getMetadata">getMetadata()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_insertApiKeyToData">insertApiKeyToData()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_sendData">sendData()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setApiKey">setApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCardHash">setCardHash()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCustomerReference">setCustomerReference()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setMetadata">setMetadata()</a></code>
+			</p>
+		</div>
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+		</div>
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Properties inherited from <a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#properties">Omnipay\Pagarme\Message\AbstractRequest</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#$endpoint"><var>$endpoint</var></a></code>
+			</p>
+		</div>
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
