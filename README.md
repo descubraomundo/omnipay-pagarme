@@ -28,6 +28,54 @@ The following gateways are provided by this package:
  * [Pagar.Me](https://pagar.me/)
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay) repository.
+
+### Example
+``` php
+// Create a gateway for the Pagarme Gateway
+  // (routes to GatewayFactory::create)
+  $gateway = Omnipay::create('Pagarme');
+
+  // Initialise the gateway
+  $gateway->initialize(array(
+      'apiKey' => 'MyApiKey',
+  ));
+
+  // Create a credit card object
+  // This card can be used for testing.
+  $card = new CreditCard(array(
+              'firstName'    => 'Example',
+              'lastName'     => 'Customer',
+              'number'       => '4242424242424242',
+              'expiryMonth'  => '01',
+              'expiryYear'   => '2020',
+              'cvv'          => '123',
+              'email'        => 'customer@example.com',
+              'address1'     => 'Street name, Street number, Neighborhood',
+              'address2'     => 'address complementary',
+              'postcode'     => '05443100',
+              'phone'        => '19 3242 8855',
+  ));
+
+  // Do an authorize transaction on the gateway
+  $transaction = $gateway->authorize(array(
+      'amount'           => '10.00',
+      'soft_descriptor'  => 'test',
+      'payment_method'   => 'credit_card',
+      'card'             => $card,
+      'metadata'         => array(
+                                'product_id' => 'ID1111',
+                                'invoice_id' => 'IV2222',
+                            ),
+  ));
+  $response = $transaction->send();
+  if ($response->isSuccessful()) {
+      echo "Authorize transaction was successful!\n";
+      $sale_id = $response->getTransactionReference();
+      $customer_id = $response->getCustomerReference();
+      $card_id = $response->getCardReference();
+      echo "Transaction reference = " . $sale_id . "\n";
+  }
+```
 ## Docs
 Read the full Classes Documentation [here](http://descubraomundo.github.io/omnipay-pagarme)
 
