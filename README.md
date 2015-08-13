@@ -1,6 +1,6 @@
-# Omnipay: Pagarme
+# Omnipay: Pagar.Me
 
-**Pagarme gateway for the Omnipay PHP payment processing library**
+**Pagar.Me gateway for the Omnipay PHP payment processing library**
 
 [![Build Status](https://img.shields.io/travis/descubraomundo/omnipay-pagarme/master.svg?style=flat-square)](https://travis-ci.org/descubraomundo/omnipay-pagarme) [![Code Climate](https://codeclimate.com/github/descubraomundo/omnipay-pagarme/badges/gpa.svg)](https://codeclimate.com/github/descubraomundo/omnipay-pagarme)  [![Test Coverage](https://codeclimate.com/github/descubraomundo/omnipay-pagarme/badges/coverage.svg)](https://codeclimate.com/github/descubraomundo/omnipay-pagarme/coverage)
 
@@ -11,7 +11,7 @@
 
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
-processing library for PHP 5.3+. This package implements Pagarme support for Omnipay.
+processing library for PHP 5.3+. This package implements Pagar.Me support for Omnipay.
 
 ## Install
 
@@ -25,7 +25,7 @@ $ composer require descubraomundo/omnipay-pagarme
 
 The following gateways are provided by this package:
 
- * [Pagarme](https://pagar.me/)
+ * [Pagar.Me](https://pagar.me/)
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay) repository.
 ## Docs
@@ -33,12 +33,12 @@ Read the full Classes Documentation [here](http://descubraomundo.github.io/omnip
 
 ## Test Mode
 
-Pagarme accounts have test-mode API keys as well as live-mode API keys. 
+Pagar.Me accounts have test-mode API keys as well as live-mode API keys. 
 Data created with test-mode credentials will never hit the credit card networks
 and will never cost anyone money.
 
 Unlike some gateways, there is no test mode endpoint separate to the live mode endpoint, the
-Pagarme API endpoint is the same for test and for live. 
+Pagar.Me API endpoint is the same for test and for live. 
 
 ## Support
 
