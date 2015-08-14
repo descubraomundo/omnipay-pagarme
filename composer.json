@@ -1,6 +1,6 @@
 {
     "name": "descubraomundo/omnipay-pagarme",
-    "description": "Pagarme driver for the Omnipay payment processing libray",
+    "description": "Pagarme driver for the Omnipay payment processing library",
     "keywords": [
         "gateway",
         "merchant",
