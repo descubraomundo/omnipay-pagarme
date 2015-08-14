@@ -70,6 +70,37 @@ class CreateCustomerRequestTest extends TestCase
         $this->assertArrayHasKey('phone', $data);
     }
     
+    public function testDataWithCustomerKey()
+    {
+        $customer = array(
+            'firstName' => 'John F',
+            'lastName' => 'Doe',
+            'email' => 'jdoe@example.com',
+            'address1' => 'Rua Alfonso F, 25, Alphaville',
+            'address2' => 'Torre A',
+            'postcode' => '05444040',
+            'phone' => '(019)9 9988-7766',
+            'birthday' => '1988-02-28',
+            'gender' => 'M',
+            'document' => '21437814860'
+        );
+        $this->request->initialize(array(
+            'customer' => $customer,
+        ));
+        $data = $this->request->getData();
+
+        $this->assertSame('John F Doe', $data['name']);
+        $this->assertSame('jdoe@example.com', $data['email']);
+        $this->assertSame('Rua Alfonso F', $data['address']['street']);
+        $this->assertSame('05444040', $data['address']['zipcode']);
+        $this->assertSame('Torre A', $data['address']['complementary']);
+        $this->assertSame('999887766', $data['phone']['number']);
+        $this->assertSame('M', $data['sex']);
+        $this->assertSame('02-28-1988', $data['born_at']);
+        $this->assertSame('21437814860', $data['document_number']);
+        $this->assertSame('21437814860', $this->request->getCustomerDocument());
+    }
+    
     public function testDataOnlyWithDocumentNumber()
     {
         $this->request->setCard(null);

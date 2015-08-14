@@ -208,6 +208,9 @@ class AuthorizeRequest extends AbstractRequest
             $data['payment_method'] = $this->getPaymentMethod();
             if ( $this->getCard() ) {
                 $data = array_merge($data, $this->getCustomerData());
+            } elseif ($this->getCustomer()) {
+                $this->setCard($this->getCustomer());
+                $data = array_merge($data, $this->getCustomerData());
             }
         } else {
             if ( $this->getCard() ) {

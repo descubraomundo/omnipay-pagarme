@@ -28,6 +28,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     }
     
     /**
+     * Set API key
      * 
      * @param string $value
      * @return AbstractRequest provides a fluent interface.
@@ -35,6 +36,27 @@ abstract class AbstractRequest extends BaseAbstractRequest
     public function setApiKey($value)
     {
         return $this->setParameter('apiKey', $value);
+    }
+    
+    /**
+     * Get Customer Data
+     * 
+     * @return array customer data
+     */
+    public function getCustomer()
+    {
+        return $this->getParameter('customer');
+    }
+    
+    /**
+     * Set Customer data
+     * 
+     * @param array $value
+     * @return AbstractRequest provides a fluent interface.
+     */
+    public function setCustomer($value)
+    {
+        return $this->setParameter('customer', $value);
     }
     
     /**

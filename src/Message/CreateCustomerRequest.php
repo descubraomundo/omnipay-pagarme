@@ -17,7 +17,8 @@ namespace Omnipay\Pagarme\Message;
  * Harnessing the Omnipay's CreditCard model, we can use the 
  * attributes listed below to create new customers. So it must 
  * pass the parameters for the card attribute or create a CreditCard
- * Object (see the code example below).
+ * Object (see the code example below). Alternatively you can pass 
+ * the data to the customer attribute.
  * 
  * * firstName
  * * lastName
@@ -70,6 +71,12 @@ namespace Omnipay\Pagarme\Message;
  *       'card' => $customer,
  *       'document_number' => '29573821052',
  *   ))->send();
+ * 
+ *   // Alternatively you can use the 'customer' attribute like so
+ *   $response = $gateway->createCustomer(array(
+ *       'customer' => $customer,
+ *   ))->send();
+ * 
  *   if ($response->isSuccessful()) {
  *       echo "Gateway createCustomer was successful.\n";
  *       // Find the customer ID
@@ -108,6 +115,15 @@ class CreateCustomerRequest extends AbstractRequest
     public function getData()
     {
         $data = array();
+        //var_dump($this->getCustomer());
+        //die;
+        if ( $this->getCustomer() ) {
+            $customerArray = $this->getCustomer();
+            $this->setCard($customerArray);
+            if ( isset($customerArray['document']) ) {
+                $this->setCustomerDocument($customerArray['document']);
+            }
+        }
         
         if ( $this->getCard() ) {
             $customer = $this->getCustomerData();

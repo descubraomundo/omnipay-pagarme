@@ -62,6 +62,37 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('false', $data['capture']);
     }
     
+    public function testSetCustomerWithoutCard()
+    {
+        $customer = array(
+            'firstName' => 'John F',
+            'lastName' => 'Doe',
+            'email' => 'jdoe@example.com',
+            'address1' => 'Rua Alfonso F, 25, Alphaville',
+            'address2' => 'Torre A',
+            'postcode' => '05444040',
+            'phone' => '(019)9 9988-7766',
+            'birthday' => '1988-02-28',
+            'gender' => 'M'
+        );
+        $this->request->initialize(array(
+            'amount' => '12.34',
+            'payment_method' => 'boleto',
+            'customer' => $customer,
+        ));
+        $data = $this->request->getData();
+        
+        $this->assertSame(1234, $data['amount']);
+        $this->assertSame('John F Doe', $data['customer']['name']);
+        $this->assertSame('jdoe@example.com', $data['customer']['email']);
+        $this->assertSame('Rua Alfonso F', $data['customer']['address']['street']);
+        $this->assertSame('05444040', $data['customer']['address']['zipcode']);
+        $this->assertSame('Torre A', $data['customer']['address']['complementary']);
+        $this->assertSame('999887766', $data['customer']['phone']['number']);
+        $this->assertSame('M', $data['customer']['sex']);
+        $this->assertSame('02-28-1988', $data['customer']['born_at']);
+    }
+    
     /**
      * @expectedException \Omnipay\Common\Exception\InvalidRequestException
      * @expectedExceptionMessage The card parameter is required

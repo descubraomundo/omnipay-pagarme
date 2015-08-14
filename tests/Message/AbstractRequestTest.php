@@ -40,6 +40,12 @@ class AbstractRequestTest extends TestCase
         $this->assertSame('abc123', $this->request->getToken());
     }
     
+    public function testCustomer()
+    {
+        $this->assertSame($this->request, $this->request->setCustomer(array('name' => 'Foo', 'email' => 'foo@example.com')));
+        $this->assertSame(array('name' => 'Foo', 'email' => 'foo@example.com'), $this->request->getCustomer());
+    }
+    
     public function testCardData()
     {
         $card = $this->getValidCard();
