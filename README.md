@@ -50,8 +50,8 @@ For general usage instructions, please see the main [Omnipay](https://github.com
               'expiryYear'   => '2020',
               'cvv'          => '123',
               'email'        => 'customer@example.com',
-              'address1'     => 'Street name, Street number, Neighborhood',
-              'address2'     => 'address complementary',
+              'address1'     => 'Street name, Street number, Complementary',
+              'address2'     => 'Neighborhood',
               'postcode'     => '05443100',
               'phone'        => '19 3242 8855',
   ));
