@@ -233,7 +233,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
             $data['customer']['address'] = $arrayAddress;
             $data['customer']['address']['zipcode'] = $card->getPostcode();
             if ( $card->getAddress2() ) {
-                $data['customer']['address']['complementary'] = $card->getAddress2();
+                $data['customer']['address']['neighborhood'] = $card->getAddress2();
             }
         }
         
@@ -278,23 +278,23 @@ abstract class AbstractRequest extends BaseAbstractRequest
      * array containing the keys:
      * * street
      * * street_number
-     * * neighborhood
+     * * complementary
      * 
      * It's important to provide the parameter $address
      * with the information in the given order and separated 
      * by commas.
      * 
      * @param string $address
-     * @return array containing the street, street_number and neighborhood
+     * @return array containing the street, street_number and complementary
      */
     protected function extractAddress($address)
     {
         $result = array();
         $explode = array_map('trim', explode(',', $address));
         
-        $result['street'] = isset($explode[2]) ? $explode[0] : '';
-        $result['street_number'] = isset($explode[2]) ? $explode[1] : '';
-        $result['neighborhood'] = isset($explode[2]) ? $explode[2] : '';
+        $result['street'] = $explode[0];
+        $result['street_number'] = isset($explode[1]) ? $explode[1] : '';
+        $result['complementary'] = isset($explode[2]) ? $explode[2] : '';
         
         return $result;
     }

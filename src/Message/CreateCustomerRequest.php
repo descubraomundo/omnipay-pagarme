@@ -22,8 +22,8 @@ namespace Omnipay\Pagarme\Message;
  * 
  * * firstName
  * * lastName
- * * address1 (must be in the format "street, street_number and neighborhood")
- * * address2 (used to specify the optional parameter "address_complementary")
+ * * address1 (must be in the format "street, street_number and complementary")
+ * * address2 (used to specify the parameter "address_neighborhood")
  * * city
  * * postcode
  * * state
@@ -59,8 +59,8 @@ namespace Omnipay\Pagarme\Message;
  *               'firstName'    => 'Example',
  *               'lastName'     => 'Customer',
  *               'email'        => 'customer@example.com',
- *               'address1'     => 'Street name, Street number, Neighborhood',
- *               'address2'     => 'address complementary',
+ *               'address1'     => 'Street name, Street number, Complementary',
+ *               'address2'     => 'Neighborhood',
  *               'postcode'     => '05443100',
  *               'phone'        => '19 3242 8855',
  *   );

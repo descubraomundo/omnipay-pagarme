@@ -35,8 +35,8 @@ class AuthorizeRequestTest extends TestCase
             'expiryYear' => '2016',
             'cvv' => '123',
             'email' => 'jdoe@example.com',
-            'address1' => 'Rua Alfonso F, 25, Alphaville',
-            'address2' => 'Torre A',
+            'address1' => 'Rua Alfonso F, 25, Torre A',
+            'address2' => 'Alphaville',
             'postcode' => '05444040',
             'phone' => '(019)9 9988-7766',
             'birthday' => '1988-02-28',
@@ -56,6 +56,7 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('Rua Alfonso F', $data['customer']['address']['street']);
         $this->assertSame('05444040', $data['customer']['address']['zipcode']);
         $this->assertSame('Torre A', $data['customer']['address']['complementary']);
+        $this->assertSame('Alphaville', $data['customer']['address']['neighborhood']);
         $this->assertSame('999887766', $data['customer']['phone']['number']);
         $this->assertSame('M', $data['customer']['sex']);
         $this->assertSame('02-28-1988', $data['customer']['born_at']);
@@ -68,8 +69,8 @@ class AuthorizeRequestTest extends TestCase
             'firstName' => 'John F',
             'lastName' => 'Doe',
             'email' => 'jdoe@example.com',
-            'address1' => 'Rua Alfonso F, 25, Alphaville',
-            'address2' => 'Torre A',
+            'address1' => 'Rua Alfonso F, 25, Torre A',
+            'address2' => 'Alphaville',
             'postcode' => '05444040',
             'phone' => '(019)9 9988-7766',
             'birthday' => '1988-02-28',
@@ -88,6 +89,7 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('Rua Alfonso F', $data['customer']['address']['street']);
         $this->assertSame('05444040', $data['customer']['address']['zipcode']);
         $this->assertSame('Torre A', $data['customer']['address']['complementary']);
+        $this->assertSame('Alphaville', $data['customer']['address']['neighborhood']);
         $this->assertSame('999887766', $data['customer']['phone']['number']);
         $this->assertSame('M', $data['customer']['sex']);
         $this->assertSame('02-28-1988', $data['customer']['born_at']);

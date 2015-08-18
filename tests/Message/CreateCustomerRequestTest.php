@@ -12,8 +12,8 @@ class CreateCustomerRequestTest extends TestCase
         $this->request->initialize(array(
             'card' => array(
                 'name' => 'Example Customer User',
-                'address1' => 'Rua Firmino, 23, Vila Paraíso',
-                'address2' => 'Bloco A',
+                'address1' => 'Rua Firmino, 23, Bloco A',
+                'address2' => 'Vila Paraíso',
                 'city' => 'Cidade',
             ),
         ));
@@ -54,7 +54,7 @@ class CreateCustomerRequestTest extends TestCase
                     'firstName' => 'John',
                     'lastName' => 'Doe',
                     'email' => 'jdoe25@example.com',
-                    'address1' => 'Rod. Anhanguera, km 25, Vila Alegre',
+                    'address1' => 'Rod. Anhanguera, km 25, Bloco A',
                     'city' => 'Campinas',
                     'state' => 'SP',
                     'country' => 'Brasil',
@@ -76,8 +76,8 @@ class CreateCustomerRequestTest extends TestCase
             'firstName' => 'John F',
             'lastName' => 'Doe',
             'email' => 'jdoe@example.com',
-            'address1' => 'Rua Alfonso F, 25, Alphaville',
-            'address2' => 'Torre A',
+            'address1' => 'Rua Alfonso F, 25, Torre A',
+            'address2' => 'Alphaville',
             'postcode' => '05444040',
             'phone' => '(019)9 9988-7766',
             'birthday' => '1988-02-28',

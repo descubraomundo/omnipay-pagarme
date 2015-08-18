@@ -94,19 +94,19 @@ class AbstractRequestTest extends TestCase
     
     public function testExtractAddressWithValidString()
     {
-        $result = $this->request->extractAddress(' Rua Foo Bar, 12 , Bairro Foo ');
+        $result = $this->request->extractAddress(' Rua Foo Bar, 12 , Complementary ');
         
         $this->assertSame('Rua Foo Bar', $result['street']);
         $this->assertSame('12', $result['street_number']);
-        $this->assertSame('Bairro Foo', $result['neighborhood']);
+        $this->assertSame('Complementary', $result['complementary']);
     }
     
     public function testExtractAddressWithInsufficientParameters()
     {
         $result = $this->request->extractAddress('Rua Foo Bar, 30');
         
-        $this->assertSame('', $result['street']);
-        $this->assertSame('', $result['street_number']);
-        $this->assertSame('', $result['neighborhood']);
+        $this->assertSame('Rua Foo Bar', $result['street']);
+        $this->assertSame('30', $result['street_number']);
+        $this->assertSame('', $result['complementary']);
     }
 }
