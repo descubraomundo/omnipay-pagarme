@@ -29,7 +29,7 @@ The following gateways are provided by this package:
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay) repository.
 
-### Example
+### Example with Credit Card
 ``` php
 // Create a gateway for the Pagarme Gateway
   // (routes to GatewayFactory::create)
@@ -45,6 +45,7 @@ For general usage instructions, please see the main [Omnipay](https://github.com
   $card = new CreditCard(array(
               'firstName'    => 'Example',
               'lastName'     => 'Customer',
+              //'name'         => 'Example Customer',
               'number'       => '4242424242424242',
               'expiryMonth'  => '01',
               'expiryYear'   => '2020',
@@ -54,6 +55,7 @@ For general usage instructions, please see the main [Omnipay](https://github.com
               'address2'     => 'Neighborhood',
               'postcode'     => '05443100',
               'phone'        => '19 3242 8855',
+              'holder_document_number => '246.375.149-23', // CPF or CNPJ
   ));
 
   // Do an authorize transaction on the gateway
@@ -61,6 +63,7 @@ For general usage instructions, please see the main [Omnipay](https://github.com
       'amount'           => '10.00',
       'soft_descriptor'  => 'test',
       'payment_method'   => 'credit_card',
+      'postback_url'     => 'http://application.com/api/',
       'card'             => $card,
       'metadata'         => array(
                                 'product_id' => 'ID1111',
@@ -76,6 +79,50 @@ For general usage instructions, please see the main [Omnipay](https://github.com
       echo "Transaction reference = " . $sale_id . "\n";
   }
 ```
+
+### Example with Boleto
+```
+// Create a gateway for the Pagarme Gateway
+  // (routes to GatewayFactory::create) 
+  // Create array with customer data
+  // This card can be used for testing.
+  $customer = new CreditCard(array(
+              'firstName'    => 'Example',
+              'lastName'     => 'Customer',
+              //'name'         => 'Example Customer',
+              'email'        => 'customer@example.com',
+              'address1'     => 'Street name, Street number, Complementary',
+              'address2'     => 'Neighborhood',
+              'postcode'     => '05443100',
+              'phone'        => '19 3242 8855',
+              'holder_document_number => '246.375.149-23', // CPF or CNPJ
+  ));
+
+  // Do an authorize transaction on the gateway
+  $transaction = $gateway->authorize(array(
+      'amount'           => '10.00',
+      'soft_descriptor'  => 'test',
+      'payment_method'   => 'boleto',
+      'postback_url'     => 'http://application.com/api/',
+      'customer'         => $customer,
+      'metadata'         => array(
+                                'product_id' => 'ID1111',
+                                'invoice_id' => 'IV2222',
+                            ),
+  ));
+  $response = $transaction->send();
+  if ($response->isSuccessful()) {
+      echo "Authorize Boleto transaction was successful!\n";
+      $sale_id = $response->getTransactionReference();
+      $boleto = $response->getBoleto();
+      echo "Boleto Url = " . $boleto['boleto_url'];
+      echo "Boleto Barcode = " . $boleto['boleto_barcode'];
+      echo "Boleto Expiration Date = " . $boleto['boleto_expiration_date'];
+      echo "Transaction reference = " . $sale_id . "\n";
+  }
+```
+
+
 ## Docs
 Read the full Classes Documentation [here](http://descubraomundo.github.io/omnipay-pagarme)
 

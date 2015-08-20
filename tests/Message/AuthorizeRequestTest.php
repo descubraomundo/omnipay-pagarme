@@ -40,7 +40,8 @@ class AuthorizeRequestTest extends TestCase
             'postcode' => '05444040',
             'phone' => '(019)9 9988-7766',
             'birthday' => '1988-02-28',
-            'gender' => 'M'
+            'gender' => 'M',
+            'holder_document_number' => '214.278.589-40'
         );
         $this->request->setCard($card);
         $data = $this->request->getData();
@@ -61,6 +62,7 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('M', $data['customer']['sex']);
         $this->assertSame('02-28-1988', $data['customer']['born_at']);
         $this->assertSame('false', $data['capture']);
+        $this->assertSame('21427858940', $data['customer']['document_number']);
     }
     
     public function testSetCustomerWithoutCard()
@@ -74,7 +76,8 @@ class AuthorizeRequestTest extends TestCase
             'postcode' => '05444040',
             'phone' => '(019)9 9988-7766',
             'birthday' => '1988-02-28',
-            'gender' => 'M'
+            'gender' => 'M',
+            'holder_document_number' => '214.278.589-40'
         );
         $this->request->initialize(array(
             'amount' => '12.34',
@@ -93,6 +96,7 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('999887766', $data['customer']['phone']['number']);
         $this->assertSame('M', $data['customer']['sex']);
         $this->assertSame('02-28-1988', $data['customer']['born_at']);
+        $this->assertSame('21427858940', $data['customer']['document_number']);
     }
     
     /**

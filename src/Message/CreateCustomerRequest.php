@@ -63,16 +63,10 @@ namespace Omnipay\Pagarme\Message;
  *               'address2'     => 'Neighborhood',
  *               'postcode'     => '05443100',
  *               'phone'        => '19 3242 8855',
+ *               'holder_document_number' => '21437814860',
  *   );
  *
- *
  *   // Do a create customer transaction on the gateway
- *   $response = $gateway->createCustomer(array(
- *       'card' => $customer,
- *       'document_number' => '29573821052',
- *   ))->send();
- * 
- *   // Alternatively you can use the 'customer' attribute like so
  *   $response = $gateway->createCustomer(array(
  *       'customer' => $customer,
  *   ))->send();
@@ -92,26 +86,6 @@ namespace Omnipay\Pagarme\Message;
  */
 class CreateCustomerRequest extends AbstractRequest
 {
-    /**
-     * Get the customer document (CPF or CNPJ)
-     *
-     * @return string customer document
-     */
-    public function getCustomerDocument()
-    {
-        return $this->getParameter('document_number');
-    }
-
-    /**
-     * Set the customer document (CPF or CNPJ)
-     *
-     * @return CreateCustomerRequest provides a fluent interface.
-     */
-    public function setCustomerDocument($value)
-    {
-        return $this->setParameter('document_number', $value);
-    }
-    
     public function getData()
     {
         $data = array();
@@ -120,9 +94,6 @@ class CreateCustomerRequest extends AbstractRequest
         if ( $this->getCustomer() ) {
             $customerArray = $this->getCustomer();
             $this->setCard($customerArray);
-            if ( isset($customerArray['document']) ) {
-                $this->setCustomerDocument($customerArray['document']);
-            }
         }
         
         if ( $this->getCard() ) {
@@ -133,10 +104,6 @@ class CreateCustomerRequest extends AbstractRequest
                 $data['address']['state'] = $this->getCard()->getState();
                 $data['address']['country'] = $this->getCard()->getCountry();
             }
-        }
-        
-        if ( $this->getCustomerDocument() ) {
-            $data['document_number'] = $this->getCustomerDocument();
         }
         
         // Validate Required Attributes

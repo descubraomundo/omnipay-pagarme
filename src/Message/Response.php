@@ -103,10 +103,10 @@ class Response extends AbstractResponse
     }
     
     /**
-     * Get the boleto_url and boleto_barcode in the
+     * Get the boleto_url, boleto_barcode and boleto_expiration_date in the
      * transaction object.
      * 
-     * @return array|null boleto_url and boleto_barcode
+     * @return array|null the boleto_url, boleto_barcode and boleto_expiration_date
      */
     public function getBoleto()
     {

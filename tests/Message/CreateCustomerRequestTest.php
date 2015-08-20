@@ -12,12 +12,12 @@ class CreateCustomerRequestTest extends TestCase
         $this->request->initialize(array(
             'card' => array(
                 'name' => 'Example Customer User',
+                'holder_document_number' => '238.654.289-50',
                 'address1' => 'Rua Firmino, 23, Bloco A',
                 'address2' => 'Vila Paraíso',
                 'city' => 'Cidade',
             ),
         ));
-        $this->request->setCustomerDocument('69264160108');
     }
 
     public function testEndpoint()
@@ -32,7 +32,6 @@ class CreateCustomerRequestTest extends TestCase
     public function testDataException()
     {
         $this->request->setCard(null);
-        $this->request->setCustomerDocument(null);
         $this->request->getData();
     }
     
@@ -43,7 +42,6 @@ class CreateCustomerRequestTest extends TestCase
     public function testDataExceptionWithName()
     {
         $this->request->setCard(array('name' => 'John Doe'));
-        $this->request->setCustomerDocument(null);
         $this->request->getData();
     }
 
@@ -60,12 +58,14 @@ class CreateCustomerRequestTest extends TestCase
                     'country' => 'Brasil',
                     'postcode' => '05223100',
                     'phone' => '013 8564 2211',
+                    'holder_document_number' => '238.654.289-50',
                 )
             );
         $data = $this->request->getData();
         
         $this->assertSame('John Doe', $data['name']);
         $this->assertSame('jdoe25@example.com', $data['email']);
+        $this->assertSame('23865428950', $data['document_number']);
         $this->assertArrayHasKey('address', $data);
         $this->assertArrayHasKey('phone', $data);
     }
@@ -82,7 +82,7 @@ class CreateCustomerRequestTest extends TestCase
             'phone' => '(019)9 9988-7766',
             'birthday' => '1988-02-28',
             'gender' => 'M',
-            'document' => '21437814860'
+            'holder_document_number' => '21437814860'
         );
         $this->request->initialize(array(
             'customer' => $customer,
@@ -98,16 +98,6 @@ class CreateCustomerRequestTest extends TestCase
         $this->assertSame('M', $data['sex']);
         $this->assertSame('02-28-1988', $data['born_at']);
         $this->assertSame('21437814860', $data['document_number']);
-        $this->assertSame('21437814860', $this->request->getCustomerDocument());
-    }
-    
-    public function testDataOnlyWithDocumentNumber()
-    {
-        $this->request->setCard(null);
-        $this->request->setCustomerDocument('77010168644');
-        $data = $this->request->getData();
-        
-        $this->assertSame('77010168644', $data['document_number']);
     }
 
     public function testSendSuccess()

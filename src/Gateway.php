@@ -33,6 +33,7 @@ use Omnipay\Common\AbstractGateway;
  *               'address2'     => 'address complementary',
  *               'postcode'     => '05443100',
  *               'phone'        => '19 3242 8855',
+ *               'holder_document_number' => '214.278.589-40',
  *   ));
  *
  *   // Do an authorize transaction on the gateway

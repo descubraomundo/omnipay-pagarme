@@ -28,6 +28,14 @@ class AbstractRequestTest extends TestCase
         $this->assertSame('123abc', $data['api_key']);
     }
     
+    public function testPagarmeCardInstance()
+    {
+        $card = $this->getValidCard();
+        $this->request->setCard($card);
+        
+        $this->assertInstanceOf('Omnipay\Pagarme\CreditCard', $this->request->getCard());
+    }
+    
     public function testCardReference()
     {
         $this->assertSame($this->request, $this->request->setCardReference('abc123'));
