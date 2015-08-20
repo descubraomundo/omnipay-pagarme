@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Omnipay\Pagarme\CreditCard</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-Omnipay.Pagarme.html" title="Summary of Omnipay\Pagarme"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Omnipay.html">
+							Omnipay<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-Omnipay.Pagarme.html">
+							Pagarme<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Omnipay.Pagarme.Message.html">
+							Message						</a>
+							</li>
+								</ul></li></ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Omnipay.Pagarme.CreditCard.html">CreditCard</a></li>
+				<li><a href="class-Omnipay.Pagarme.Gateway.html">Gateway</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class CreditCard</h1>
+
+
+	<div class="description">
+	<p>Credit Card class</p>
+
+<p>This class extends the Omnipay's Credit Card
+allowing the addition of a new attribute "holder_document_number".</p>
+
+<p>Example:</p>
+
+<pre><span class="php-comment">// Define credit card parameters, which should look like this</span>
+  <span class="php-var">$parameters</span> = <span class="php-keyword1">array</span>(
+      <span class="php-quote">'firstName'</span> =&gt; <span class="php-quote">'Bobby'</span>,
+      <span class="php-quote">'lastName'</span> =&gt; <span class="php-quote">'Tables'</span>,
+      <span class="php-quote">'number'</span> =&gt; <span class="php-quote">'4444333322221111'</span>,
+      <span class="php-quote">'cvv'</span> =&gt; <span class="php-quote">'123'</span>,
+      <span class="php-quote">'expiryMonth'</span> =&gt; <span class="php-quote">'12'</span>,
+      <span class="php-quote">'expiryYear'</span> =&gt; <span class="php-quote">'2017'</span>,
+      <span class="php-quote">'email'</span> =&gt; <span class="php-quote">'testcard@gmail.com'</span>,
+      <span class="php-quote">'holder_document_number'</span> =&gt; <span class="php-quote">'224.158.178-40'</span> <span class="php-comment">// CPF or CNPJ</span>
+  );
+
+  <span class="php-comment">// Create a credit card object</span>
+  <span class="php-var">$card</span> = <span class="php-keyword1">new</span> CreditCard(<span class="php-var">$parameters</span>);</pre>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+Omnipay\Common\CreditCard
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Omnipay\Pagarme\CreditCard</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Omnipay.html">Omnipay</a>\<a href="namespace-Omnipay.Pagarme.html">Pagarme</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.CreditCard.html#11-62" title="Go to source code">CreditCard.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="getHolderDocumentNumber" id="_getHolderDocumentNumber">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getHolderDocumentNumber">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.CreditCard.html#38-46" title="Go to source code">getHolderDocumentNumber</a>( )</code>
+
+			<div class="description short">
+				<p>Get Document number (CPF or CNPJ).</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Get Document number (CPF or CNPJ).</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setHolderDocumentNumber" id="_setHolderDocumentNumber">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Omnipay.Pagarme.CreditCard.html">Omnipay\Pagarme\CreditCard</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setHolderDocumentNumber">#</a>
+			<code><a href="source-class-Omnipay.Pagarme.CreditCard.html#48-61" title="Go to source code">setHolderDocumentNumber</a>( <span>string <var>$value</var></span> )</code>
+
+			<div class="description short">
+				<p>Set Document Number (CPF or CNPJ)</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set Document Number (CPF or CNPJ)</p>
+
+<p>Non-numeric characters are stripped out of the document number, so
+it's safe to pass in strings such as "224.158.178-40" etc.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$value</var></dt>
+						<dd>Parameter value</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Omnipay.Pagarme.CreditCard.html">Omnipay\Pagarme\CreditCard</a></code><br>provides a fluent interface.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

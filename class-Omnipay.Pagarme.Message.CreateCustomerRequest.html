@@ -153,16 +153,10 @@ the data to the customer attribute.</p>
               <span class="php-quote">'address2'</span>     =&gt; <span class="php-quote">'Neighborhood'</span>,
               <span class="php-quote">'postcode'</span>     =&gt; <span class="php-quote">'05443100'</span>,
               <span class="php-quote">'phone'</span>        =&gt; <span class="php-quote">'19 3242 8855'</span>,
+              <span class="php-quote">'holder_document_number'</span> =&gt; <span class="php-quote">'21437814860'</span>,
   );
 
-
   <span class="php-comment">// Do a create customer transaction on the gateway</span>
-  <span class="php-var">$response</span> = <span class="php-var">$gateway</span>-&gt;createCustomer(<span class="php-keyword1">array</span>(
-      <span class="php-quote">'card'</span> =&gt; <span class="php-var">$customer</span>,
-      <span class="php-quote">'document_number'</span> =&gt; <span class="php-quote">'29573821052'</span>,
-  ))-&gt;send();
-
-  <span class="php-comment">// Alternatively you can use the 'customer' attribute like so</span>
   <span class="php-var">$response</span> = <span class="php-var">$gateway</span>-&gt;createCustomer(<span class="php-keyword1">array</span>(
       <span class="php-quote">'customer'</span> =&gt; <span class="php-var">$customer</span>,
   ))-&gt;send();
@@ -214,7 +208,7 @@ Omnipay\Common\Message\AbstractRequest
 
 				<b>Link:</b>
 				<a href="https://docs.pagar.me/api/?shell#criando-um-cliente">https://docs.pagar.me/api/?shell#criando-um-cliente</a><br>
-			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#8-156" title="Go to source code">Message/CreateCustomerRequest.php</a>
+			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#8-123" title="Go to source code">Message/CreateCustomerRequest.php</a>
 		<br>
 	</div>
 
@@ -223,72 +217,6 @@ Omnipay\Common\Message\AbstractRequest
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods">
-		<tr data-order="getCustomerDocument" id="_getCustomerDocument">
-
-			<td class="attributes"><code>
-				 public 
-				string
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_getCustomerDocument">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#95-103" title="Go to source code">getCustomerDocument</a>( )</code>
-
-			<div class="description short">
-				<p>Get the customer document (CPF or CNPJ)</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>Get the customer document (CPF or CNPJ)</p>
-
-
-
-					<h4>Returns</h4>
-					<div class="list">
-						string<br>customer document
-					</div>
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="setCustomerDocument" id="_setCustomerDocument">
-
-			<td class="attributes"><code>
-				 public 
-				<code><a href="class-Omnipay.Pagarme.Message.CreateCustomerRequest.html">Omnipay\Pagarme\Message\CreateCustomerRequest</a></code>
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_setCustomerDocument">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#105-113" title="Go to source code">setCustomerDocument</a>( <span> <var>$value</var></span> )</code>
-
-			<div class="description short">
-				<p>Set the customer document (CPF or CNPJ)</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>Set the customer document (CPF or CNPJ)</p>
-
-
-
-					<h4>Returns</h4>
-					<div class="list">
-						<code><a href="class-Omnipay.Pagarme.Message.CreateCustomerRequest.html">Omnipay\Pagarme\Message\CreateCustomerRequest</a></code><br>provides a fluent interface.
-					</div>
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
 		<tr data-order="getData" id="_getData">
 
 			<td class="attributes"><code>
@@ -300,7 +228,7 @@ Omnipay\Common\Message\AbstractRequest
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getData">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#115-150" title="Go to source code">getData</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#89-117" title="Go to source code">getData</a>( )</code>
 
 			<div class="description short">
 				
@@ -329,7 +257,7 @@ Omnipay\Common\Message\AbstractRequest
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getEndpoint">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#152-155" title="Go to source code">getEndpoint</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.CreateCustomerRequest.html#119-122" title="Go to source code">getEndpoint</a>( )</code>
 
 			<div class="description short">
 				
@@ -359,6 +287,7 @@ Omnipay\Common\Message\AbstractRequest
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractAddress">extractAddress()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractDddPhone">extractDddPhone()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getApiKey">getApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCard">getCard()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardData">getCardData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardHash">getCardHash()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCustomer">getCustomer()</a></code>, 
@@ -369,6 +298,7 @@ Omnipay\Common\Message\AbstractRequest
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_insertApiKeyToData">insertApiKeyToData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_sendData">sendData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setApiKey">setApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCard">setCard()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCardHash">setCardHash()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCustomer">setCustomer()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCustomerReference">setCustomerReference()</a></code>, 

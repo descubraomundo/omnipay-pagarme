@@ -70,6 +70,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-Omnipay.Pagarme.CreditCard.html">CreditCard</a></li>
 				<li class="active"><a href="class-Omnipay.Pagarme.Gateway.html">Gateway</a></li>
 			</ul>
 
@@ -117,6 +118,7 @@
               <span class="php-quote">'address2'</span>     =&gt; <span class="php-quote">'address complementary'</span>,
               <span class="php-quote">'postcode'</span>     =&gt; <span class="php-quote">'05443100'</span>,
               <span class="php-quote">'phone'</span>        =&gt; <span class="php-quote">'19 3242 8855'</span>,
+              <span class="php-quote">'holder_document_number'</span> =&gt; <span class="php-quote">'214.278.589-40'</span>,
   ));
 
   <span class="php-comment">// Do an authorize transaction on the gateway</span>
@@ -191,7 +193,7 @@ Omnipay\Common\AbstractGateway
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html">Omnipay\Pagarme\Message\AbstractRequest</a></code><br>
 				<b>Link:</b>
 				<a href="https://docs.pagar.me/">https://docs.pagar.me/</a><br>
-			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Gateway.html#7-289" title="Go to source code">Gateway.php</a>
+			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Gateway.html#7-290" title="Go to source code">Gateway.php</a>
 		<br>
 	</div>
 
@@ -211,7 +213,7 @@ Omnipay\Common\AbstractGateway
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getName">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#83-86" title="Go to source code">getName</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#84-87" title="Go to source code">getName</a>( )</code>
 
 			<div class="description short">
 				
@@ -240,7 +242,7 @@ Omnipay\Common\AbstractGateway
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getDefaultParameters">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#88-98" title="Go to source code">getDefaultParameters</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#89-99" title="Go to source code">getDefaultParameters</a>( )</code>
 
 			<div class="description short">
 				<p>Get the gateway parameters</p>
@@ -273,7 +275,7 @@ Omnipay\Common\AbstractGateway
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getApiKey">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#100-111" title="Go to source code">getApiKey</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#101-112" title="Go to source code">getApiKey</a>( )</code>
 
 			<div class="description short">
 				<p>Get the gateway API Key</p>
@@ -309,7 +311,7 @@ the apiKey parameter when creating the gateway object.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setApiKey">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#113-136" title="Go to source code">setApiKey</a>( <span>string <var>$value</var></span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#114-137" title="Go to source code">setApiKey</a>( <span>string <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Set the gateway API Key</p>
@@ -361,7 +363,7 @@ use test mode just use your test mode API key.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_authorize">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#138-172" title="Go to source code">authorize</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#139-173" title="Go to source code">authorize</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Authorize Request</p>
@@ -428,7 +430,7 @@ on credit card object:</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_capture">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#174-185" title="Go to source code">capture</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#175-186" title="Go to source code">capture</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Capture Request</p>
@@ -468,7 +470,7 @@ on credit card object:</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_purchase">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#187-222" title="Go to source code">purchase</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#188-223" title="Go to source code">purchase</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Purchase request.</p>
@@ -538,7 +540,7 @@ on credit card object:</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_refund">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#224-239" title="Go to source code">refund</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#225-240" title="Go to source code">refund</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Refund Request</p>
@@ -582,7 +584,7 @@ be refunded to the credit that was originally authorized.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_void">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#241-255" title="Go to source code">void</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#242-256" title="Go to source code">void</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Void Transaction Request</p>
@@ -625,7 +627,7 @@ we treat it as a full refund.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_createCard">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#257-273" title="Go to source code">createCard</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#258-274" title="Go to source code">createCard</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Create Card</p>
@@ -670,7 +672,7 @@ and a card reference, and is essentially the same as CreateCustomerRequest</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_createCustomer">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#275-288" title="Go to source code">createCustomer</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Gateway.html#276-289" title="Go to source code">createCustomer</a>( <span>array <var>$parameters</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Create Customer</p>

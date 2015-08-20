@@ -123,10 +123,14 @@ on credit card object:</p>
 <ul>
 <li>firstName</li>
 <li>lastName</li>
+<li>name</li>
+<li>birthday</li>
+<li>gender</li>
 <li>address1 (must be in the format "street, street_number and neighborhood")</li>
 <li>address2 (used to specify the optional parameter "street_complementary")</li>
 <li>postcode</li>
 <li>phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")</li>
+<li>holder_document_number (CPF or CNPJ)</li>
 </ul>
 
 <p>Example:</p>
@@ -154,6 +158,7 @@ on credit card object:</p>
               <span class="php-quote">'address2'</span>     =&gt; <span class="php-quote">'Neighborhood'</span>,
               <span class="php-quote">'postcode'</span>     =&gt; <span class="php-quote">'05443100'</span>,
               <span class="php-quote">'phone'</span>        =&gt; <span class="php-quote">'19 3242 8855'</span>,
+              <span class="php-quote">'holder_document_number'</span> =&gt; <span class="php-quote">'214.278.589-40'</span>,
   ));
 
   <span class="php-comment">// Do an authorize transaction on the gateway</span>
@@ -361,6 +366,7 @@ class and over-rides the getData method setting capture = true.</p><br>
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractAddress">extractAddress()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractDddPhone">extractDddPhone()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getApiKey">getApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCard">getCard()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardData">getCardData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardHash">getCardHash()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCustomer">getCustomer()</a></code>, 
@@ -371,6 +377,7 @@ class and over-rides the getData method setting capture = true.</p><br>
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_insertApiKeyToData">insertApiKeyToData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_sendData">sendData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setApiKey">setApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCard">setCard()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCardHash">setCardHash()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCustomer">setCustomer()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCustomerReference">setCustomerReference()</a></code>, 

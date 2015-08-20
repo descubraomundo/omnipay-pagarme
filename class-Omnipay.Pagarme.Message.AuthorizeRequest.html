@@ -123,10 +123,14 @@ on credit card object:</p>
 <ul>
 <li>firstName</li>
 <li>lastName</li>
+<li>name</li>
+<li>birthday</li>
+<li>gender</li>
 <li>address1 (must be in the format "street, street_number and neighborhood")</li>
 <li>address2 (used to specify the optional parameter "street_complementary")</li>
 <li>postcode</li>
 <li>phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")</li>
+<li>holder_document_number (CPF or CNPJ)</li>
 </ul>
 
 <p>Example:</p>
@@ -154,6 +158,7 @@ on credit card object:</p>
               <span class="php-quote">'address2'</span>     =&gt; <span class="php-quote">'Neighborhood'</span>,
               <span class="php-quote">'postcode'</span>     =&gt; <span class="php-quote">'05443100'</span>,
               <span class="php-quote">'phone'</span>        =&gt; <span class="php-quote">'19 3242 8855'</span>,
+              <span class="php-quote">'holder_document_number'</span> =&gt; <span class="php-quote">'214.278.589-40'</span>,
   ));
 
   <span class="php-comment">// Do an authorize transaction on the gateway</span>
@@ -225,7 +230,7 @@ Omnipay\Common\Message\AbstractRequest
 				<code><a href="class-Omnipay.Pagarme.Message.CaptureRequest.html">Omnipay\Pagarme\Message\CaptureRequest</a></code><br>
 				<b>Link:</b>
 				<a href="https://docs.pagar.me/api/?shell#objeto-transaction">https://docs.pagar.me/api/?shell#objeto-transaction</a><br>
-			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#8-235" title="Go to source code">Message/AuthorizeRequest.php</a>
+			<b>Located at</b> <a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#8-240" title="Go to source code">Message/AuthorizeRequest.php</a>
 		<br>
 	</div>
 
@@ -245,7 +250,7 @@ Omnipay\Common\Message\AbstractRequest
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getPostbackUrl">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#93-101" title="Go to source code">getPostbackUrl</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#98-106" title="Go to source code">getPostbackUrl</a>( )</code>
 
 			<div class="description short">
 				<p>Get postback URL.</p>
@@ -278,7 +283,7 @@ Omnipay\Common\Message\AbstractRequest
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setPostbackUrl">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#103-112" title="Go to source code">setPostbackUrl</a>( <span>string <var>$value</var></span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#108-117" title="Go to source code">setPostbackUrl</a>( <span>string <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Set postback URL.</p>
@@ -316,7 +321,7 @@ Omnipay\Common\Message\AbstractRequest
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getInstallments">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#114-122" title="Go to source code">getInstallments</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#119-127" title="Go to source code">getInstallments</a>( )</code>
 
 			<div class="description short">
 				<p>Get installments.</p>
@@ -349,7 +354,7 @@ Omnipay\Common\Message\AbstractRequest
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setInstallments">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#124-136" title="Go to source code">setInstallments</a>( <span>integer <var>$value</var></span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#129-141" title="Go to source code">setInstallments</a>( <span>integer <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Set Installments.</p>
@@ -390,7 +395,7 @@ If the payment method is boleto defaults to 1.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getSoftDescriptor">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#138-146" title="Go to source code">getSoftDescriptor</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#143-151" title="Go to source code">getSoftDescriptor</a>( )</code>
 
 			<div class="description short">
 				<p>Get soft description.</p>
@@ -423,7 +428,7 @@ If the payment method is boleto defaults to 1.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setSoftDescriptor">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#148-160" title="Go to source code">setSoftDescriptor</a>( <span>string <var>$value</var></span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#153-165" title="Go to source code">setSoftDescriptor</a>( <span>string <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Set soft description.</p>
@@ -464,7 +469,7 @@ The provided string will be truncated if lengh > 13.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getBoletoExpirationDate">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#162-172" title="Go to source code">getBoletoExpirationDate</a>( <span> <var>$format</var> = <span class="php-quote">'Y-m-d\TH:i:s'</span></span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#167-177" title="Go to source code">getBoletoExpirationDate</a>( <span> <var>$format</var> = <span class="php-quote">'Y-m-d\TH:i:s'</span></span> )</code>
 
 			<div class="description short">
 				<p>Get the boleto expiration date</p>
@@ -497,7 +502,7 @@ The provided string will be truncated if lengh > 13.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setBoletoExpirationDate">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#174-190" title="Go to source code">setBoletoExpirationDate</a>( <span>string <var>$value</var></span> )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#179-195" title="Go to source code">setBoletoExpirationDate</a>( <span>string <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Set the boleto expiration date</p>
@@ -535,7 +540,7 @@ The provided string will be truncated if lengh > 13.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getData">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#192-229" title="Go to source code">getData</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#197-234" title="Go to source code">getData</a>( )</code>
 
 			<div class="description short">
 				
@@ -564,7 +569,7 @@ The provided string will be truncated if lengh > 13.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getEndpoint">#</a>
-			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#231-234" title="Go to source code">getEndpoint</a>( )</code>
+			<code><a href="source-class-Omnipay.Pagarme.Message.AuthorizeRequest.html#236-239" title="Go to source code">getEndpoint</a>( )</code>
 
 			<div class="description short">
 				
@@ -594,6 +599,7 @@ The provided string will be truncated if lengh > 13.</p>
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractAddress">extractAddress()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_extractDddPhone">extractDddPhone()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getApiKey">getApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCard">getCard()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardData">getCardData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCardHash">getCardHash()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_getCustomer">getCustomer()</a></code>, 
@@ -604,6 +610,7 @@ The provided string will be truncated if lengh > 13.</p>
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_insertApiKeyToData">insertApiKeyToData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_sendData">sendData()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setApiKey">setApiKey()</a></code>, 
+				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCard">setCard()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCardHash">setCardHash()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCustomer">setCustomer()</a></code>, 
 				<code><a href="class-Omnipay.Pagarme.Message.AbstractRequest.html#_setCustomerReference">setCustomerReference()</a></code>, 
