@@ -81,7 +81,8 @@ For general usage instructions, please see the main [Omnipay](https://github.com
 ```
 
 ### Example with Boleto
-```
+
+``` php
 // Create a gateway for the Pagarme Gateway
   // (routes to GatewayFactory::create) 
   // Create array with customer data
