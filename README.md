@@ -46,6 +46,8 @@ For general usage instructions, please see the main [Omnipay](https://github.com
               'firstName'    => 'Example',
               'lastName'     => 'Customer',
               //'name'         => 'Example Customer',
+              'birthday'       => '1988-02-28',
+              'gender'         => 'M',
               'number'       => '4242424242424242',
               'expiryMonth'  => '01',
               'expiryYear'   => '2020',
@@ -61,10 +63,13 @@ For general usage instructions, please see the main [Omnipay](https://github.com
   // Do an authorize transaction on the gateway
   $transaction = $gateway->authorize(array(
       'amount'           => '10.00',
-      'soft_descriptor'  => 'test',
+      'soft_descriptor'  => 'test', // 13 characters allowed
       'payment_method'   => 'credit_card',
+      'installments'     => 5,
       'postback_url'     => 'http://application.com/api/',
       'card'             => $card,
+      // 'card_hash'      => 'card_k5sT...',
+      // 'card_id'        => 254786,
       'metadata'         => array(
                                 'product_id' => 'ID1111',
                                 'invoice_id' => 'IV2222',
@@ -86,8 +91,7 @@ For general usage instructions, please see the main [Omnipay](https://github.com
 // Create a gateway for the Pagarme Gateway
   // (routes to GatewayFactory::create) 
   // Create array with customer data
-  // This card can be used for testing.
-  $customer = new CreditCard(array(
+  $customer = array(
               'firstName'    => 'Example',
               'lastName'     => 'Customer',
               //'name'         => 'Example Customer',

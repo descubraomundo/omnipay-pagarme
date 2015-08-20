@@ -29,10 +29,14 @@ namespace Omnipay\Pagarme\Message;
  * 
  * * firstName
  * * lastName
+ * * name
+ * * birthday
+ * * gender
  * * address1 (must be in the format "street, street_number and neighborhood")
  * * address2 (used to specify the optional parameter "street_complementary")
  * * postcode
  * * phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")
+ * * holder_document_number (CPF or CNPJ)
  * 
  * Example:
  *
