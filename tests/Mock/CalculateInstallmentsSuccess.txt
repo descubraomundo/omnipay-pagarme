@@ -1,0 +1,83 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+Content-Type: application/json 
+Date: Mon, 24 Aug 2015 12:03:44 GMT 
+Server: nginx 
+X-Powered-By: Express
+X-RateLimit-Limit: 30
+X-RateLimit-Remaining: 29
+X-RateLimit-Reset: 1440417826
+X-Response-Time: 16ms
+Content-Length: 805 
+Connection: keep-alive
+X-Iinfo: 8-45684391-45684393 NNNN CT(150 150 0) RT(1440417823342 23) q(0 0 3 -1) r(6 6)
+X-CDN: Incapsula
+
+{
+  "installments": {
+    "1": {
+      "installment": 1,
+      "amount": 120000,
+      "installment_amount": 120000
+    },
+    "2": {
+      "installment": 2,
+      "amount": 120000,
+      "installment_amount": 60000
+    },
+    "3": {
+      "installment": 3,
+      "amount": 120000,
+      "installment_amount": 40000
+    },
+    "4": {
+      "installment": 4,
+      "amount": 123457,
+      "installment_amount": 30864
+    },
+    "5": {
+      "installment": 5,
+      "amount": 124172,
+      "installment_amount": 24834
+    },
+    "6": {
+      "installment": 6,
+      "amount": 124896,
+      "installment_amount": 20816
+    },
+    "7": {
+      "installment": 7,
+      "amount": 125628,
+      "installment_amount": 17947
+    },
+    "8": {
+      "installment": 8,
+      "amount": 126369,
+      "installment_amount": 15796
+    },
+    "9": {
+      "installment": 9,
+      "amount": 127119,
+      "installment_amount": 14124
+    },
+    "10": {
+      "installment": 10,
+      "amount": 127877,
+      "installment_amount": 12788
+    },
+    "11": {
+      "installment": 11,
+      "amount": 128645,
+      "installment_amount": 11695
+    },
+    "12": {
+      "installment": 12,
+      "amount": 129422,
+      "installment_amount": 10785
+    }
+  }
+}

@@ -1,0 +1,31 @@
+HTTP/1.1 400 Bad Request
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+Content-Type: application/json 
+Date: Mon, 24 Aug 2015 12:39:17 GMT 
+Server: nginx 
+X-Powered-By: Express
+X-RateLimit-Limit: 30
+X-RateLimit-Remaining: 29
+X-RateLimit-Reset: 1440419959
+X-Response-Time: 16ms
+Content-Length: 298 
+Connection: keep-alive
+Set-Cookie: incap_ses_297_166741=HNKHe0LC6nS3UUoRJSgfBHQQ21UAAAAAv4QKtNyOXIyl6C0jz+/IrA==; path=/; Domain=.pagar.me 
+X-Iinfo: 6-22507443-22505778 PNNN RT(1440419956391 49) q(0 0 0 0) r(2 2) U11
+X-CDN: Incapsula
+
+{
+  "errors": [
+    {
+      "parameter_name": "interest_rate",
+      "type": "invalid_parameter",
+      "message": "Taxa de juros está faltando"
+    }
+  ],
+  "url": "/transactions/calculate_installments_amount?api_key=ak_test_R2j5LA1IqqxBZWLfy9yU03dSJbqY6G&max_installments=12&free_installments=3&interest_rate=&amount=120000",
+  "method": "get"
+}

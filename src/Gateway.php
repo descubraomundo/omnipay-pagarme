@@ -287,4 +287,18 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Pagarme\Message\CreateCustomerRequest', $parameters);
     }
+    
+    /**
+     * Pagarme Calculate Installments Request
+     *
+     * You can use Pagar.me API to calculate installments
+     * for a purchase.
+     * 
+     * @param array $parameters
+     * @return \Omnipay\Pagarme\Message\InstallmentsRequest
+     */
+    public function calculateInstallments(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Pagarme\Message\InstallmentsRequest', $parameters);
+    }
 }

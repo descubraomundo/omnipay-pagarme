@@ -125,4 +125,19 @@ class Response extends AbstractResponse
         
         return null;
     }
+    
+    /**
+     * Get the Calculted Installments provided by Pagar.me API.
+     * 
+     * @return array|null the calculated installments
+     */
+    public function getCalculatedInstallments()
+    {
+        if (isset($this->data['installments'])) {
+            $data = $this->data['installments'];
+            return $data;
+        } else {
+            return null;
+        }
+    }
 }

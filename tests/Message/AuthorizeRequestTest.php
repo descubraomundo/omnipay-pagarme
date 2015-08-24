@@ -65,6 +65,59 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('21427858940', $data['customer']['document_number']);
     }
     
+    public function testGetDataForBoletoPaymentMethod()
+    {
+        $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->request->initialize(
+            array(
+                'amount' => '12.00',
+                'payment_method' => 'boleto',
+                'postback_url' => 'http://requestb.in/pkt7pgpk',
+                'boleto_expiration_date' => '25 August 2015',
+            )
+        );
+        $data = $this->request->getData();
+        
+        $this->assertSame('2015-08-25T03:00:00', $data['boleto_expiration_date']);
+        $this->assertArrayNotHasKey('card_id', $data);
+        $this->assertArrayNotHasKey('card_hash', $data);
+        $this->assertArrayNotHasKey('card_number', $data);
+    }
+    
+    public function testGetDataUsingCardHash()
+    {
+        $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->request->initialize(
+            array(
+                'amount' => '12.00',
+                'payment_method' => 'credit_card',
+                'card_hash' => 'card_123',
+            )
+        );
+        $data = $this->request->getData();
+        
+        $this->assertSame('card_123', $data['card_hash']);
+        $this->assertArrayNotHasKey('card_id', $data);
+        $this->assertArrayNotHasKey('card_number', $data);
+    }
+    
+    public function testGetDataUsingCardReference()
+    {
+        $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->request->initialize(
+            array(
+                'amount' => '12.00',
+                'payment_method' => 'credit_card',
+                'cardReference' => 123456,
+            )
+        );
+        $data = $this->request->getData();
+        
+        $this->assertSame(123456, $data['card_id']);
+        $this->assertArrayNotHasKey('card_hash', $data);
+        $this->assertArrayNotHasKey('card_number', $data);
+    }
+    
     public function testSetCustomerWithoutCard()
     {
         $customer = array(
@@ -115,6 +168,14 @@ class AuthorizeRequestTest extends TestCase
         $this->request->setBoletoExpirationDate('2 august 2015');
         
         $this->assertSame('2015-08-02T03:00:00', $this->request->getBoletoExpirationDate());
+    }
+    
+    public function testSetBoletoExpirationDateWithNull()
+    {
+        $this->request->setPaymentMethod('boleto');
+        $this->request->setBoletoExpirationDate(null);
+        
+        $this->assertNull($this->request->getBoletoExpirationDate());
     }
     
     public function testSetBoletoPaymentMethod()
