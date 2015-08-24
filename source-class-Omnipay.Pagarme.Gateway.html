@@ -77,6 +77,7 @@
 				<li><a href="class-Omnipay.Pagarme.Message.CaptureRequest.html">Omnipay\Pagarme\Message\CaptureRequest</a></li>
 				<li><a href="class-Omnipay.Pagarme.Message.CreateCardRequest.html">Omnipay\Pagarme\Message\CreateCardRequest</a></li>
 				<li><a href="class-Omnipay.Pagarme.Message.CreateCustomerRequest.html">Omnipay\Pagarme\Message\CreateCustomerRequest</a></li>
+				<li><a href="class-Omnipay.Pagarme.Message.InstallmentsRequest.html">Omnipay\Pagarme\Message\InstallmentsRequest</a></li>
 				<li><a href="class-Omnipay.Pagarme.Message.PurchaseRequest.html">Omnipay\Pagarme\Message\PurchaseRequest</a></li>
 				<li><a href="class-Omnipay.Pagarme.Message.RefundRequest.html">Omnipay\Pagarme\Message\RefundRequest</a></li>
 				<li><a href="class-Omnipay.Pagarme.Message.Response.html">Omnipay\Pagarme\Message\Response</a></li>
@@ -384,8 +385,22 @@
 </span><span id="287" class="l"><a href="#287">287 </a>    {
 </span><span id="288" class="l"><a href="#288">288 </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;createRequest(<span class="php-quote">'\Omnipay\Pagarme\Message\CreateCustomerRequest'</span>, <span class="php-var">$parameters</span>);
 </span><span id="289" class="l"><a href="#289">289 </a>    }
-</span><span id="290" class="l"><a href="#290">290 </a>}
-</span><span id="291" class="l"><a href="#291">291 </a></span></code></pre>
+</span><span id="290" class="l"><a href="#290">290 </a>    
+</span><span id="291" class="l"><a href="#291">291 </a>    <span class="php-comment">/**
+</span></span><span id="292" class="l"><a href="#292">292 </a><span class="php-comment">     * Pagarme Calculate Installments Request
+</span></span><span id="293" class="l"><a href="#293">293 </a><span class="php-comment">     *
+</span></span><span id="294" class="l"><a href="#294">294 </a><span class="php-comment">     * You can use Pagar.me API to calculate installments
+</span></span><span id="295" class="l"><a href="#295">295 </a><span class="php-comment">     * for a purchase.
+</span></span><span id="296" class="l"><a href="#296">296 </a><span class="php-comment">     * 
+</span></span><span id="297" class="l"><a href="#297">297 </a><span class="php-comment">     * @param array $parameters
+</span></span><span id="298" class="l"><a href="#298">298 </a><span class="php-comment">     * @return \Omnipay\Pagarme\Message\InstallmentsRequest
+</span></span><span id="299" class="l"><a href="#299">299 </a><span class="php-comment">     */</span>
+</span><span id="300" class="l"><a href="#300">300 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> calculateInstallments(<span class="php-keyword1">array</span> <span class="php-var">$parameters</span> = <span class="php-keyword1">array</span>())
+</span><span id="301" class="l"><a href="#301">301 </a>    {
+</span><span id="302" class="l"><a href="#302">302 </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;createRequest(<span class="php-quote">'\Omnipay\Pagarme\Message\InstallmentsRequest'</span>, <span class="php-var">$parameters</span>);
+</span><span id="303" class="l"><a href="#303">303 </a>    }
+</span><span id="304" class="l"><a href="#304">304 </a>}
+</span><span id="305" class="l"><a href="#305">305 </a></span></code></pre>
 	</div>
 
 	<div id="footer">
@@ -393,6 +408,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?533e23ef2f02bd4b20548834a028566b6eb403e0"></script>
-<script src="elementlist.js?a45bee395ad9b10888dbdd8274d5405e00bd5137"></script>
+<script src="elementlist.js?720ce91e99e9614cf45bed4edba3a332ed6fd692"></script>
 </body>
 </html>
