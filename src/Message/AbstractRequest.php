@@ -191,11 +191,17 @@ abstract class AbstractRequest extends BaseAbstractRequest
             $this->getHttpMethod(),
             $this->getEndpoint(),
             null,
-            $this->insertApiKeyToData($data)
+            $this->insertApiKeyToData($data),
+            $this->getOptions()
         );
         $httpResponse = $httpRequest->send();
 
         return $this->response = new Response($this, $httpResponse->json());
+    }
+    
+    protected function getOptions()
+    {
+        return array();
     }
     
     protected function getEndpoint()

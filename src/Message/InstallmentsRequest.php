@@ -107,18 +107,29 @@ class InstallmentsRequest extends AbstractRequest
         return 'GET';
     }
     
-    public function getData()
+    public function getQuery()
     {
         $this->validate('amount', 'interest_rate', 'max_installments');
         
         $data = array();
-        
+        $data['api_key'] = $this->getApiKey();
         $data['amount'] = $this->getAmountInteger();
         $data['max_installments'] = $this->getMaxInstallments();
         $data['free_installments'] = $this->getFreeInstallments();
         $data['interest_rate'] = $this->getInterestRate();
         
         return $data;
+    }
+    
+    protected function getOptions() {         
+        $options['query'] = $this->getQuery();
+         
+        return $options;
+         
+    }
+    public function getData()
+    {
+        return array();
     }
     
     public function getEndpoint()

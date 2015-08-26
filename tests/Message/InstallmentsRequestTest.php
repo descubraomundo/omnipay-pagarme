@@ -23,10 +23,7 @@ class InstallmentsRequestTest extends TestCase
     {
         $data = $this->request->getData();
         
-        $this->assertSame(12, $data['max_installments']);
-        $this->assertSame(3, $data['free_installments']);
-        $this->assertSame(1.12, $data['interest_rate']);
-        $this->assertSame(120000, $data['amount']);
+        $this->assertSame(array(), $data);
     }
     
     public function testInterestRate()
@@ -54,7 +51,7 @@ class InstallmentsRequestTest extends TestCase
     public function testAmountRequired()
     {
         $this->request->setAmount(null);
-        $this->request->getData();
+        $this->request->getQuery();
     }
     
     /**
@@ -64,7 +61,7 @@ class InstallmentsRequestTest extends TestCase
     public function testInterestRateRequired()
     {
         $this->request->setInterestRate(null);
-        $this->request->getData();
+        $this->request->getQuery();
     }
     
     /**
@@ -74,7 +71,7 @@ class InstallmentsRequestTest extends TestCase
     public function testMaxInstallmentsRequired()
     {
         $this->request->setMaxInstallments(null);
-        $this->request->getData();
+        $this->request->getQuery();
     }
     
     public function testGetHttpMethod()
