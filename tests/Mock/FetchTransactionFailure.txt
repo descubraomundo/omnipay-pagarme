@@ -1,0 +1,30 @@
+HTTP/1.1 404 Not Found
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+Content-Type: application/json 
+Date: Thu, 27 Aug 2015 19:05:45 GMT 
+Server: nginx 
+X-Powered-By: Express
+X-RateLimit-Limit: 30
+X-RateLimit-Remaining: 29
+X-RateLimit-Reset: 1440702347
+X-Response-Time: 38ms
+Content-Length: 186 
+Connection: keep-alive
+X-Iinfo: 9-5852669-5835142 PNNN RT(1440702344579 28) q(0 0 0 -1) r(1 1) U11
+X-CDN: Incapsula
+
+{
+  "errors": [
+    {
+      "type": "not_found",
+      "parameter_name": null,
+      "message": "Transaction não encontrado"
+    }
+  ],
+  "url": "/transactions/957784?api_key=ak_test_R2j5LA1IqqxBZWLfy9yU03dSJbqY6G",
+  "method": "get"
+}

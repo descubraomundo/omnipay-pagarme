@@ -1,0 +1,98 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE
+Access-Control-Allow-Origin: *
+Charset: utf-8
+Content-Type: application/json 
+Date: Thu, 27 Aug 2015 19:03:48 GMT 
+ETag: "1613867490" 
+Server: nginx 
+X-Powered-By: Express
+X-RateLimit-Limit: 30
+X-RateLimit-Remaining: 29
+X-RateLimit-Reset: 1440702230
+X-Response-Time: 68ms
+Content-Length: 1559 
+Connection: keep-alive
+Set-Cookie: nlbi_166741=ne8mAdHtCF0RMpwFW7H6TQAAAAALnHhodUiZzDcri4qShiSs; path=/; Domain=.pagar.me
+Set-Cookie: incap_ses_297_166741=nwxBX703rVp/+/VfJygfBBNf31UAAAAA8ji4YXrBE6Be/MOKcMuYxQ==; path=/; Domain=.pagar.me 
+X-Iinfo: 9-5828000-5828009 NNNN CT(144 143 0) RT(1440702227197 52) q(0 0 3 1) r(5 5)
+X-CDN: Incapsula
+
+{
+  "object": "transaction",
+  "status": "paid",
+  "refuse_reason": null,
+  "status_reason": "acquirer",
+  "acquirer_response_code": "00",
+  "acquirer_name": "development",
+  "authorization_code": "70272",
+  "soft_descriptor": null,
+  "tid": "1440094339345",
+  "nsu": "1440094339345",
+  "date_created": "2015-08-20T18:12:18.000Z",
+  "date_updated": "2015-08-20T18:12:19.000Z",
+  "amount": 1537,
+  "installments": 1,
+  "id": 257784,
+  "cost": 73.055,
+  "card_holder_name": "Leon F. Castillo",
+  "card_last_digits": "1278",
+  "card_first_digits": "492798",
+  "card_brand": "visa",
+  "postback_url": null,
+  "payment_method": "credit_card",
+  "antifraud_score": null,
+  "boleto_url": null,
+  "boleto_barcode": null,
+  "boleto_expiration_date": null,
+  "referer": "api_key",
+  "ip": "201.82.63.71",
+  "subscription_id": null,
+  "phone": {
+    "object": "phone",
+    "ddi": "55",
+    "ddd": "15",
+    "number": "190590746",
+    "id": 15788
+  },
+  "address": {
+    "object": "address",
+    "street": "Onowu Loop",
+    "complementary": "",
+    "street_number": "476",
+    "neighborhood": "Mevwaw Road",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "zipcode": "20511170",
+    "country": "Brasil",
+    "id": 16035
+  },
+  "customer": {
+    "object": "customer",
+    "document_number": "27611355805",
+    "document_type": "cpf",
+    "name": "Leon F. Castillo",
+    "email": "nachurroj@example.com",
+    "born_at": null,
+    "gender": null,
+    "date_created": "2015-08-20T18:12:18.000Z",
+    "id": 22970
+  },
+  "card": {
+    "object": "card",
+    "id": "card_cidkizjc2002tzs6eqh2ns2bk",
+    "date_created": "2015-08-20T18:12:18.000Z",
+    "date_updated": "2015-08-20T18:12:19.000Z",
+    "brand": "visa",
+    "holder_name": "Leon F. Castillo",
+    "first_digits": "492798",
+    "last_digits": "1278",
+    "country": "US",
+    "fingerprint": "7Era0vQDhYFm",
+    "valid": true
+  },
+  "metadata": {},
+  "antifraud_metadata": {}
+}

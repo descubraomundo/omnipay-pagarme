@@ -199,6 +199,14 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->response = new Response($this, $httpResponse->json());
     }
     
+    /**
+     * Get Query Options.
+     *
+     * Must be over-ridden in sub classes that make GET requests
+     * with query parameters.
+     *
+     * @return array The query Options
+     */
     protected function getOptions()
     {
         return array();

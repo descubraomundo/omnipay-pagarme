@@ -66,4 +66,11 @@ class GatewayTest extends GatewayTestCase
 
         $this->assertInstanceOf('Omnipay\Pagarme\Message\InstallmentsRequest', $request);
     }
+    
+    public function testFetchTransaction()
+    {
+        $request = $this->gateway->fetchTransaction();
+
+        $this->assertInstanceOf('Omnipay\Pagarme\Message\FetchTransactionRequest', $request);
+    }
 }

@@ -301,4 +301,15 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Pagarme\Message\InstallmentsRequest', $parameters);
     }
+    
+    /**
+     * Pagarme Fetch Transaction by Id.
+     * 
+     * @param array $parameters
+     * @return \Omnipay\Pagarme\Message\FetchTransactionRequest
+     */
+    public function fetchTransaction(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Pagarme\Message\FetchTransactionRequest', $parameters);
+    }
 }

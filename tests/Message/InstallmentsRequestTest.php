@@ -79,6 +79,13 @@ class InstallmentsRequestTest extends TestCase
         $this->assertSame('GET', $this->request->getHttpMethod());
     }
     
+    public function testGetQuery()
+    {
+        $data = $this->request->getQuery();
+        
+        $this->assertArrayHasKey('api_key', $data);
+    }
+    
     public function testSendSuccess()
     {
         $this->setMockHttpResponse('CalculateInstallmentsSuccess.txt');
