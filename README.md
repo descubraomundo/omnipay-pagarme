@@ -57,7 +57,7 @@ For general usage instructions, please see the main [Omnipay](https://github.com
               'address2'     => 'Neighborhood',
               'postcode'     => '05443100',
               'phone'        => '19 3242 8855',
-              'holder_document_number => '246.375.149-23', // CPF or CNPJ
+              'holder_document_number' => '246.375.149-23', // CPF or CNPJ
   ));
 
   // Do an authorize transaction on the gateway
