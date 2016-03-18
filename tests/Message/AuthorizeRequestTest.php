@@ -3,6 +3,8 @@
 namespace Omnipay\Pagarme\Message;
 
 use Omnipay\Tests\TestCase;
+use DateTime;
+use DateInterval;
 
 class AuthorizeRequestTest extends TestCase
 {
@@ -27,12 +29,14 @@ class AuthorizeRequestTest extends TestCase
 
     public function testGetData()
     {
+        $expiryDate = new DateTime();
+        $expiryDate->add(new DateInterval("P1Y"));
         $card = array(
             'firstName' => 'John F',
             'lastName' => 'Doe',
             'number' => '4242424242424242',
-            'expiryMonth' => '6',
-            'expiryYear' => '2016',
+            'expiryMonth' => $expiryDate->format('m'),
+            'expiryYear' => $expiryDate->format('Y'),
             'cvv' => '123',
             'email' => 'jdoe@example.com',
             'address1' => 'Rua Alfonso F, 25, Torre A',
@@ -64,7 +68,7 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('false', $data['capture']);
         $this->assertSame('21427858940', $data['customer']['document_number']);
     }
-    
+
     public function testGetDataForBoletoPaymentMethod()
     {
         $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
@@ -77,13 +81,13 @@ class AuthorizeRequestTest extends TestCase
             )
         );
         $data = $this->request->getData();
-        
+
         $this->assertSame('2015-08-25T03:00:00', $data['boleto_expiration_date']);
         $this->assertArrayNotHasKey('card_id', $data);
         $this->assertArrayNotHasKey('card_hash', $data);
         $this->assertArrayNotHasKey('card_number', $data);
     }
-    
+
     public function testGetDataUsingCardHash()
     {
         $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
@@ -95,12 +99,12 @@ class AuthorizeRequestTest extends TestCase
             )
         );
         $data = $this->request->getData();
-        
+
         $this->assertSame('card_123', $data['card_hash']);
         $this->assertArrayNotHasKey('card_id', $data);
         $this->assertArrayNotHasKey('card_number', $data);
     }
-    
+
     public function testGetDataUsingCardReference()
     {
         $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
@@ -112,12 +116,12 @@ class AuthorizeRequestTest extends TestCase
             )
         );
         $data = $this->request->getData();
-        
+
         $this->assertSame(123456, $data['card_id']);
         $this->assertArrayNotHasKey('card_hash', $data);
         $this->assertArrayNotHasKey('card_number', $data);
     }
-    
+
     public function testSetCustomerWithoutCard()
     {
         $customer = array(
@@ -138,7 +142,7 @@ class AuthorizeRequestTest extends TestCase
             'customer' => $customer,
         ));
         $data = $this->request->getData();
-        
+
         $this->assertSame(1234, $data['amount']);
         $this->assertSame('John F Doe', $data['customer']['name']);
         $this->assertSame('jdoe@example.com', $data['customer']['email']);
@@ -151,7 +155,7 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('02-28-1988', $data['customer']['born_at']);
         $this->assertSame('21427858940', $data['customer']['document_number']);
     }
-    
+
     /**
      * @expectedException \Omnipay\Common\Exception\InvalidRequestException
      * @expectedExceptionMessage The card parameter is required
@@ -161,23 +165,23 @@ class AuthorizeRequestTest extends TestCase
         $this->request->setCard(null);
         $this->request->getData();
     }
-    
+
     public function testSetBoletoExpirationDate()
     {
         $this->request->setPaymentMethod('boleto');
         $this->request->setBoletoExpirationDate('2 august 2015');
-        
+
         $this->assertSame('2015-08-02T03:00:00', $this->request->getBoletoExpirationDate());
     }
-    
+
     public function testSetBoletoExpirationDateWithNull()
     {
         $this->request->setPaymentMethod('boleto');
         $this->request->setBoletoExpirationDate(null);
-        
+
         $this->assertNull($this->request->getBoletoExpirationDate());
     }
-    
+
     public function testSetBoletoPaymentMethod()
     {
         $this->request->initialize(
@@ -191,7 +195,7 @@ class AuthorizeRequestTest extends TestCase
         );
         $this->request->setPaymentMethod('boleto');
         $data = $this->request->getData();
-        
+
         $this->assertSame('boleto', $data['payment_method']);
         $this->assertSame('John Doe', $data['customer']['name']);
         $this->assertSame('johndoe@example.com', $data['customer']['email']);
@@ -199,45 +203,45 @@ class AuthorizeRequestTest extends TestCase
         $this->assertArrayNotHasKey('card_hash', $data);
         $this->assertArrayNotHasKey('card_number', $data);
     }
-    
+
     public function testSendSuccess()
     {
         $this->setMockHttpResponse('PurchaseSuccess.txt');
         $response = $this->request->send();
-        
+
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertSame(184220, $response->getTransactionReference());
         $this->assertSame('card_ci6l9fx8f0042rt16rtb477gj', $response->getCardReference());
         $this->assertNull($response->getMessage());
     }
-    
+
     public function testSendFailure()
     {
         $this->setMockHttpResponse('PurchaseFailure.txt');
         $response = $this->request->send();
-        
+
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertSame(243844, $response->getTransactionReference());
         $this->assertSame('card_cicq9age0005h4d6d7hxx7034', $response->getCardReference());
         $this->assertSame('acquirer', $response->getMessage());
     }
-    
+
     public function testSendError()
     {
         $this->setMockHttpResponse('PurchaseError.txt');
         $response = $this->request->send();
-        
+
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getCardReference());
         $this->assertSame('api_key inválida', $response->getMessage());
     }
-    
+
     public function testEndpoint()
     {
         $this->assertSame('https://api.pagar.me/1/transactions', $this->request->getEndpoint());
     }
-    
+
 }

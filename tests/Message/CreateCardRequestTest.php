@@ -3,6 +3,8 @@
 namespace Omnipay\Pagarme\Message;
 
 use Omnipay\Tests\TestCase;
+use DateTime;
+use DateInterval;
 
 class CreateCardRequestTest extends TestCase
 {
@@ -30,28 +32,30 @@ class CreateCardRequestTest extends TestCase
 
     public function testDataWithCard()
     {
+        $expiryDate = new DateTime();
+        $expiryDate->add(new DateInterval("P1Y"));
         $card = array(
             'billingName' => 'Foo Bar',
             'number' => '4111111111111111',
-            'expiryMonth' => '01',
-            'expiryYear' => '2016',
+            'expiryMonth' => $expiryDate->format('m'),
+            'expiryYear' => $expiryDate->format('Y'),
         );
         $this->request->setCard($card);
         $this->request->setCustomerReference(123456);
         $data = $this->request->getData();
 
         $this->assertSame('4111111111111111', $data['card_number']);
-        $this->assertSame('012016', $data['card_expiration_date']);
+        $this->assertSame($expiryDate->format('mY'), $data['card_expiration_date']);
         $this->assertSame('Foo Bar', $data['card_holder_name']);
         $this->assertSame(123456, $data['customer_id']);
     }
-    
+
     public function testDataWithCardHash()
     {
         $this->request->setCard(null);
         $this->request->setCardHash('card_1111');
         $data = $this->request->getData();
-        
+
         $this->assertSame('card_1111', $data['card_hash']);
     }
 
