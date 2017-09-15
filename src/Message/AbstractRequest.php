@@ -17,7 +17,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
      * @var string URL
      */
     protected $endpoint = 'https://api.pagar.me/1/';
-    
+
     /**
      * Get the card.
      *
@@ -42,20 +42,20 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
         return $this->setParameter('card', $value);
     }
-    
+
     /**
      * Get API key
-     * 
+     *
      * @return string API key
      */
     public function getApiKey()
     {
         return $this->getParameter('apiKey');
     }
-    
+
     /**
      * Set API key
-     * 
+     *
      * @param string $value
      * @return AbstractRequest provides a fluent interface.
      */
@@ -63,20 +63,20 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->setParameter('apiKey', $value);
     }
-    
+
     /**
      * Get Customer Data
-     * 
+     *
      * @return array customer data
      */
     public function getCustomer()
     {
         return $this->getParameter('customer');
     }
-    
+
     /**
      * Set Customer data
-     * 
+     *
      * @param array $value
      * @return AbstractRequest provides a fluent interface.
      */
@@ -84,7 +84,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->setParameter('customer', $value);
     }
-    
+
     /**
      * Get the customer reference
      *
@@ -107,7 +107,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->setParameter('customerReference', $value);
     }
-    
+
     /**
      * Get the card hash
      *
@@ -129,19 +129,19 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->setParameter('card_hash', $value);
     }
-    
+
     /**
      * Get Metadata
-     * 
+     *
      * @return array metadata
      */
     public function getMetadata()
     {
         return $this->getParameter('metadata');
     }
-    
+
     /**
-     * 
+     *
      * @param array $value
      * @return AbstractRequest provides a fluent interface.
      */
@@ -149,20 +149,20 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->setParameter('metadata', $value);
     }
-    
+
     /**
      * Insert the API key into de array.
-     * 
+     *
      * @param array $data
      * @return array The data with the API key to be used in all Requests
      */
     protected function insertApiKeyToData($data)
     {
         $data['api_key'] = $this->getApiKey();
-        
+
         return $data;
     }
-     
+
     /**
      * Get HTTP Method.
      *
@@ -174,7 +174,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return 'POST';
     }
-    
+
     public function sendData($data)
     {
         // don't throw exceptions for 4xx errors
@@ -198,7 +198,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
         return $this->response = new Response($this, $httpResponse->json());
     }
-    
+
     /**
      * Get Query Options.
      *
@@ -211,17 +211,17 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return array();
     }
-    
+
     protected function getEndpoint()
     {
-        return $this->endpoint; 
+        return $this->endpoint;
     }
-    
+
     protected function createResponse($data)
     {
         return $this->response = new Response($this, $data);
     }
-    
+
     /**
      * Get the card data.
      *
@@ -236,7 +236,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         $card = $this->getCard();
         $data = array();
-        
+
         $card->validate();
         $data['object'] = 'card';
         $data['card_number'] = $card->getNumber();
@@ -245,30 +245,30 @@ abstract class AbstractRequest extends BaseAbstractRequest
             $data['card_cvv'] = $card->getCvv();
         }
         $data['card_holder_name'] = $card->getName();
-        
+
         return $data;
     }
-    
+
     /**
      * Get the Customer data.
-     * 
+     *
      * Because the pagarme gateway uses a common format for passing
      * customer data to the API, this function can be called to get the
      * data from the card object in the format that the API requires.
-     * 
+     *
      * @return array customer data
      */
-    protected function getCustomerData() 
+    protected function getCustomerData()
     {
         $card = $this->getCard();
         $data = array();
-        
+
         $data['customer']['name'] = $card->getName();
         $data['customer']['email'] = $card->getEmail();
         $data['customer']['sex'] = $card->getGender();
         $data['customer']['born_at'] = $card->getBirthday('m-d-Y');
         $data['customer']['document_number'] = $card->getHolderDocumentNumber();
-        
+
         $arrayAddress = $this->extractAddress($card->getAddress1());
         if ( ! empty($arrayAddress['street']) ) {
             $data['customer']['address'] = $arrayAddress;
@@ -276,23 +276,27 @@ abstract class AbstractRequest extends BaseAbstractRequest
             if ( $card->getAddress2() ) {
                 $data['customer']['address']['neighborhood'] = $card->getAddress2();
             }
+
+            $data['customer']['address']['city']    = $card->getCity();
+            $data['customer']['address']['state']   = $card->getState();
+            $data['customer']['address']['country'] = $card->getCountry();
         }
-        
+
         $arrayPhone = $this->extractDddPhone($card->getPhone());
         if ( ! empty($arrayPhone['ddd']) ) {
             $data['customer']['phone'] = $arrayPhone;
         }
-        
+
         return $data;
     }
-    
+
     /**
-     * Separate DDD from phone numbers in an array 
+     * Separate DDD from phone numbers in an array
      * containing two keys:
-     * 
+     *
      * * ddd
      * * number
-     * 
+     *
      * @param string $phoneNumber phone number with DDD (byref)
      * @return array the Phone number and the DDD with two digits
      */
@@ -310,21 +314,21 @@ abstract class AbstractRequest extends BaseAbstractRequest
             $arrayPhone['ddd'] = substr($phone, 0, 2);
             $arrayPhone['number'] = substr($phone, 2);
         }
-        
+
         return $arrayPhone;
     }
-    
+
     /**
-     * Separate data from the credit card Address in an 
+     * Separate data from the credit card Address in an
      * array containing the keys:
      * * street
      * * street_number
      * * complementary
-     * 
+     *
      * It's important to provide the parameter $address
-     * with the information in the given order and separated 
+     * with the information in the given order and separated
      * by commas.
-     * 
+     *
      * @param string $address
      * @return array containing the street, street_number and complementary
      */
@@ -332,11 +336,11 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         $result = array();
         $explode = array_map('trim', explode(',', $address));
-        
+
         $result['street'] = $explode[0];
         $result['street_number'] = isset($explode[1]) ? $explode[1] : '';
         $result['complementary'] = isset($explode[2]) ? $explode[2] : '';
-        
+
         return $result;
     }
 }
