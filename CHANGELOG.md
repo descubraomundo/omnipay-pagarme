@@ -1,5 +1,11 @@
 # Change Log
 
+## [3.0](https://github.com/descubraomundo/omnipay-pagarme/releases/tag/v3.0) (2019-08-26)
+- Initial Relase for Omnipay v3
+
+## [2.4.1](https://github.com/descubraomundo/omnipay-pagarme/releases/tag/v2.4.1) (2019-08-26)
+- Created specific version for Omnipay v2
+
 ## [1.4.0](https://github.com/descubraomundo/omnipay-pagarme/releases/tag/v1.4.0) (2015-08-27)
 **Implemented enhancements:**
 
