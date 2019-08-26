@@ -180,7 +180,9 @@ abstract class AbstractRequest extends BaseAbstractRequest
         $httpRequest = $this->httpClient->request(
             $this->getHttpMethod(),
             $this->getEndpoint(),
-            [],
+            [
+                'Content-Type' => 'application/json'
+            ],
             json_encode($this->insertApiKeyToData($data)),
             $this->getOptions()
         );
