@@ -25,7 +25,7 @@ class Response extends AbstractResponse
         }
         return !isset($this->data['errors']);
     }
-    
+
     /**
      * Get the transaction reference.
      *
@@ -39,7 +39,7 @@ class Response extends AbstractResponse
 
         return null;
     }
-    
+
     /**
      * Get a card reference, for createCard or createCustomer requests.
      *
@@ -57,7 +57,7 @@ class Response extends AbstractResponse
 
         return null;
     }
-    
+
     /**
      * Get a customer reference, for createCustomer requests.
      *
@@ -81,7 +81,7 @@ class Response extends AbstractResponse
 
         return null;
     }
-    
+
     /**
      * Get the error message from the response.
      *
@@ -101,11 +101,11 @@ class Response extends AbstractResponse
 
         return null;
     }
-    
+
     /**
      * Get the boleto_url, boleto_barcode and boleto_expiration_date in the
      * transaction object.
-     * 
+     *
      * @return array|null the boleto_url, boleto_barcode and boleto_expiration_date
      */
     public function getBoleto()
@@ -113,7 +113,7 @@ class Response extends AbstractResponse
         if (isset($this->data['object']) && 'transaction' === $this->data['object']) {
             if ( $this->data['boleto_url'] ) {
                 $data = array(
-                    'boleto_url' => $this->data['boleto_url'], 
+                    'boleto_url' => $this->data['boleto_url'],
                     'boleto_barcode' => $this->data['boleto_barcode'],
                     'boleto_expiration_date' => $this->data['boleto_expiration_date'],
                 );
@@ -122,13 +122,13 @@ class Response extends AbstractResponse
                 return null;
             }
         }
-        
+
         return null;
     }
-    
+
     /**
      * Get the Calculted Installments provided by Pagar.me API.
-     * 
+     *
      * @return array|null the calculated installments
      */
     public function getCalculatedInstallments()

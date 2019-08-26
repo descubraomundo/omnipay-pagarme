@@ -177,26 +177,18 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
     public function sendData($data)
     {
-        // don't throw exceptions for 4xx errors
-        $this->httpClient->getEventDispatcher()->addListener(
-            'request.error',
-            function ($event) {
-                if ($event['response']->isClientError()) {
-                    $event->stopPropagation();
-                }
-            }
-        );
-
-        $httpRequest = $this->httpClient->createRequest(
+        $httpRequest = $this->httpClient->request(
             $this->getHttpMethod(),
             $this->getEndpoint(),
-            null,
-            $this->insertApiKeyToData($data),
+            [],
+            json_encode($this->insertApiKeyToData($data)),
             $this->getOptions()
         );
-        $httpResponse = $httpRequest->send();
 
-        return $this->response = new Response($this, $httpResponse->json());
+        $payload =  json_decode($httpRequest->getBody()->getContents(), true);
+
+
+        return $this->response = new Response($this, $payload);
     }
 
     /**
