@@ -111,7 +111,7 @@ class Response extends AbstractResponse
     public function getBoleto()
     {
         if (isset($this->data['object']) && 'transaction' === $this->data['object']) {
-            if ( $this->data['boleto_url'] ) {
+            if ($this->data['boleto_url']) {
                 $data = array(
                     'boleto_url' => $this->data['boleto_url'],
                     'boleto_barcode' => $this->data['boleto_barcode'],

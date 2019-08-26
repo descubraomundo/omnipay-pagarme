@@ -9,10 +9,10 @@ use Omnipay\Common\CreditCard as Card;
 
 /**
  * Credit Card class
- * 
- * This class extends the Omnipay's Credit Card 
+ *
+ * This class extends the Omnipay's Credit Card
  * allowing the addition of a new attribute "holder_document_number".
- * 
+ *
  * Example:
  *
  * <code>

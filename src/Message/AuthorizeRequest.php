@@ -16,17 +16,17 @@ namespace Omnipay\Pagarme\Message;
  * Either a card object or card_id is required by default. Otherwise,
  * you must provide a card_hash, like the ones returned by Pagarme.js
  * or use the boleto's payment method.
- * 
+ *
  * Pagarme gateway supports only two types of "payment_method":
- * 
+ *
  * * credit_card
  * * boleto
- * 
- * 
+ *
+ *
  * Optionally, you can provide the customer details to use the antifraude
  * feature. These details is passed using the following attributes available
  * on credit card object:
- * 
+ *
  * * firstName
  * * lastName
  * * name
@@ -37,7 +37,7 @@ namespace Omnipay\Pagarme\Message;
  * * postcode
  * * phone (must be in the format "DDD PhoneNumber" e.g. "19 98888 5555")
  * * holder_document_number (CPF or CNPJ)
- * 
+ *
  * Example:
  *
  * <code>
@@ -97,7 +97,7 @@ class AuthorizeRequest extends AbstractRequest
 {
     /**
      * Get postback URL.
-     * 
+     *
      * @return string
      */
     public function getPostbackUrl()
@@ -107,7 +107,7 @@ class AuthorizeRequest extends AbstractRequest
     
     /**
      * Set postback URL.
-     * 
+     *
      * @param string $value
      * @return AuthorizeRequest provides a fluent interface.
      */
@@ -118,7 +118,7 @@ class AuthorizeRequest extends AbstractRequest
     
     /**
      * Get installments.
-     * 
+     *
      * @return integer the number of installments
      */
     public function getInstallments()
@@ -128,10 +128,10 @@ class AuthorizeRequest extends AbstractRequest
     
     /**
      * Set Installments.
-     * 
-     * The number must be between 1 and 12. 
+     *
+     * The number must be between 1 and 12.
      * If the payment method is boleto defaults to 1.
-     * 
+     *
      * @param integer $value
      * @return AuthorizeRequest provides a fluent interface.
      */
@@ -142,7 +142,7 @@ class AuthorizeRequest extends AbstractRequest
     
     /**
      * Get soft description.
-     * 
+     *
      * @return string small description
      */
     public function getSoftDescriptor()
@@ -152,10 +152,10 @@ class AuthorizeRequest extends AbstractRequest
     
     /**
      * Set soft description.
-     * 
+     *
      * The Pagarme gateway allow 13 characters in the soft_descriptor.
      * The provided string will be truncated if lengh > 13.
-     * 
+     *
      * @param string $value
      * @return AuthorizeRequest provides a fluent interface.
      */
@@ -166,7 +166,7 @@ class AuthorizeRequest extends AbstractRequest
     
     /**
      * Get the boleto expiration date
-     * 
+     *
      * @return string boleto expiration date
      */
     public function getBoletoExpirationDate($format = 'Y-m-d\TH:i:s')
@@ -178,7 +178,7 @@ class AuthorizeRequest extends AbstractRequest
     
     /**
      * Set the boleto expiration date
-     * 
+     *
      * @param string $value defaults to atual date + 7 days
      * @return AuthorizeRequest provides a fluent interface
      */
@@ -206,23 +206,23 @@ class AuthorizeRequest extends AbstractRequest
         $data['installments'] = $this->getInstallments();
         $data['soft_descriptor'] = $this->getSoftDescriptor();
         $data['metadata'] = $this->getMetadata();
-        if ( $this->getPaymentMethod() && ($this->getPaymentMethod() == 'boleto') ) {
-            if ( $this->getBoletoExpirationDate() ) {
+        if ($this->getPaymentMethod() && ($this->getPaymentMethod() == 'boleto')) {
+            if ($this->getBoletoExpirationDate()) {
                 $data['boleto_expiration_date'] = $this->getBoletoExpirationDate();
             }
             $data['payment_method'] = $this->getPaymentMethod();
-            if ( $this->getCard() ) {
+            if ($this->getCard()) {
                 $data = array_merge($data, $this->getCustomerData());
             } elseif ($this->getCustomer()) {
                 $this->setCard($this->getCustomer());
                 $data = array_merge($data, $this->getCustomerData());
             }
         } else {
-            if ( $this->getCard() ) {
+            if ($this->getCard()) {
                 $data = array_merge($data, $this->getCardData(), $this->getCustomerData());
-            } elseif ( $this->getCardHash() ) {
+            } elseif ($this->getCardHash()) {
                 $data['card_hash'] = $this->getCardHash();
-            } elseif( $this->getCardReference() ) {
+            } elseif ($this->getCardReference()) {
                 $data['card_id'] = $this->getCardReference();
             } else {
                 $this->validate('card');

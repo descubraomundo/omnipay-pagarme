@@ -19,9 +19,9 @@ namespace Omnipay\Pagarme\Message;
  *       'interest_rate'      => 1.12,
  *       'amount'             => '1200.00',
  *   ));
- * 
+ *
  *   $response = $transaction->send();
- * 
+ *
  *   if ($response->isSuccessful()) {
  *       echo "Calculate Installments request was successful!\n";
  *       $installments = $response->getCalculatedInstallments();
@@ -36,7 +36,7 @@ class InstallmentsRequest extends AbstractRequest
 {
     /**
      * Get Interest Rate.
-     * 
+     *
      * @return float
      */
     public function getInterestRate()
@@ -46,7 +46,7 @@ class InstallmentsRequest extends AbstractRequest
     
     /**
      * Set Interest Rate.
-     * 
+     *
      * @param float $value
      * @return InstallmentsRequest provides a fluent interface.
      */
@@ -57,7 +57,7 @@ class InstallmentsRequest extends AbstractRequest
     
     /**
      * Get Max Installments.
-     * 
+     *
      * @return integer
      */
     public function getMaxInstallments()
@@ -67,7 +67,7 @@ class InstallmentsRequest extends AbstractRequest
     
     /**
      * Set Max Installments.
-     * 
+     *
      * @param integer $value
      * @return InstallmentsRequest provides a fluent interface.
      */
@@ -78,7 +78,7 @@ class InstallmentsRequest extends AbstractRequest
     
     /**
      * Get Free Installments.
-     * 
+     *
      * @return integer
      */
     public function getFreeInstallments()
@@ -88,7 +88,7 @@ class InstallmentsRequest extends AbstractRequest
     
     /**
      * Set Free Installments.
-     * 
+     *
      * @param integer $value
      * @return InstallmentsRequest provides a fluent interface.
      */
@@ -99,7 +99,7 @@ class InstallmentsRequest extends AbstractRequest
     
     /**
      * Get HTTP method used by InstallmentsRequest.
-     * 
+     *
      * @return string
      */
     public function getHttpMethod()
@@ -121,11 +121,11 @@ class InstallmentsRequest extends AbstractRequest
         return $data;
     }
     
-    protected function getOptions() {         
+    protected function getOptions()
+    {
         $options['query'] = $this->getQuery();
          
         return $options;
-         
     }
     public function getData()
     {

@@ -44,7 +44,8 @@ class FetchTransactionRequest extends AbstractRequest
         return $data;
     }
     
-    protected function getOptions() {         
+    protected function getOptions()
+    {
         $options['query'] = $this->getQuery();
          
         return $options;

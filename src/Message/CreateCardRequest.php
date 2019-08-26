@@ -1,24 +1,23 @@
 <?php
 /**
  * Pagarme Create Credit Card Request
- * 
+ *
  */
 namespace Omnipay\Pagarme\Message;
 
-
 /**
  * Pagarme Create Credit Card Request
- * 
- * Whenever you make a request through the Pagarme's API the 
- * cardholder information is stored, so that in future, 
- * you can use this information to new charges, or 
+ *
+ * Whenever you make a request through the Pagarme's API the
+ * cardholder information is stored, so that in future,
+ * you can use this information to new charges, or
  * implementing features like one-click-buy.
- * 
+ *
  * Either a card object or card_id is required. Otherwise,
  * you must provide a card_hash, like the ones returned by Pagarme.js.
- * 
+ *
  * The customer_id is optional.
- * 
+ *
  * <code>
  *   // Create a credit card object
  *   // This card can be used for testing.
@@ -50,12 +49,12 @@ class CreateCardRequest extends AbstractRequest
 {
     public function getData()
     {
-        if ( $this->getCard() ) {
+        if ($this->getCard()) {
             $data = $this->getCardData();
-            if ( $this->getCustomerReference() ) {
+            if ($this->getCustomerReference()) {
                 $data['customer_id'] = $this->getCustomerReference();
             }
-        } elseif ( $this->getCardHash() ) {
+        } elseif ($this->getCardHash()) {
             $data['card_hash'] = $this->getCardHash();
         } else {
             $this->validate('card_number');
@@ -64,7 +63,8 @@ class CreateCardRequest extends AbstractRequest
         return $data;
     }
     
-    public function getEndpoint() {
+    public function getEndpoint()
+    {
         return $this->endpoint . 'cards';
     }
 }

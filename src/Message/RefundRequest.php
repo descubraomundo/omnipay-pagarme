@@ -8,8 +8,8 @@ namespace Omnipay\Pagarme\Message;
 /**
  * Pagarme Refund Request
  *
- * This route is used when you want to reverse a transaction 
- * performed by a charge via credit card. 
+ * This route is used when you want to reverse a transaction
+ * performed by a charge via credit card.
  * In case of reversal a transaction, only the id of the transaction
  * is required to effect the reversal.
  *

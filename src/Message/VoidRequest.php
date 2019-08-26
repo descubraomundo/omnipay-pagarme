@@ -43,4 +43,3 @@ class VoidRequest extends RefundRequest
         return $data;
     }
 }
-

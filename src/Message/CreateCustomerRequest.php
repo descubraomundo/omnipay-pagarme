@@ -13,13 +13,13 @@ namespace Omnipay\Pagarme\Message;
  * The API allows you to create, delete, and update your customers.
  * You can retrieve individual customers as well as a list of all of
  * your customers.
- * 
- * Harnessing the Omnipay's CreditCard model, we can use the 
- * attributes listed below to create new customers. So it must 
+ *
+ * Harnessing the Omnipay's CreditCard model, we can use the
+ * attributes listed below to create new customers. So it must
  * pass the parameters for the card attribute or create a CreditCard
- * Object (see the code example below). Alternatively you can pass 
+ * Object (see the code example below). Alternatively you can pass
  * the data to the customer attribute.
- * 
+ *
  * * firstName
  * * lastName
  * * address1 (must be in the format "street, street_number and complementary")
@@ -32,14 +32,14 @@ namespace Omnipay\Pagarme\Message;
  * * email
  * * birthday
  * * gender
- * 
- * 
+ *
+ *
  * Provided card's attributes will be ignored by Pagarme API.
- * 
- * Either a pair name|email or document_number (valid CPF or CNPJ) is required. 
- * 
- * 
- * 
+ *
+ * Either a pair name|email or document_number (valid CPF or CNPJ) is required.
+ *
+ *
+ *
  * Example:
  *
  * <code>
@@ -70,7 +70,7 @@ namespace Omnipay\Pagarme\Message;
  *   $response = $gateway->createCustomer(array(
  *       'customer' => $customer,
  *   ))->send();
- * 
+ *
  *   if ($response->isSuccessful()) {
  *       echo "Gateway createCustomer was successful.\n";
  *       // Find the customer ID
@@ -91,15 +91,15 @@ class CreateCustomerRequest extends AbstractRequest
         $data = array();
         //var_dump($this->getCustomer());
         //die;
-        if ( $this->getCustomer() ) {
+        if ($this->getCustomer()) {
             $customerArray = $this->getCustomer();
             $this->setCard($customerArray);
         }
         
-        if ( $this->getCard() ) {
+        if ($this->getCard()) {
             $customer = $this->getCustomerData();
             $data = $customer['customer'];
-            if ( isset($data['address']) ) {
+            if (isset($data['address'])) {
                 $data['address']['city'] = $this->getCard()->getCity();
                 $data['address']['state'] = $this->getCard()->getState();
                 $data['address']['country'] = $this->getCard()->getCountry();
@@ -107,8 +107,8 @@ class CreateCustomerRequest extends AbstractRequest
         }
         
         // Validate Required Attributes
-        if ( ! isset($data['document_number']) ) {
-            if ( ! (isset($data['email']) && (isset($data['name']))) ) {
+        if (! isset($data['document_number'])) {
+            if (! (isset($data['email']) && (isset($data['name'])))) {
                 $this->validate('document_number');
             }
         }

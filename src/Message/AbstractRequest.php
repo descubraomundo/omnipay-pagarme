@@ -234,8 +234,8 @@ abstract class AbstractRequest extends BaseAbstractRequest
         $card->validate();
         $data['object'] = 'card';
         $data['card_number'] = $card->getNumber();
-        $data['card_expiration_date'] = sprintf('%02d',$card->getExpiryMonth()).(string)$card->getExpiryYear();
-        if ( $card->getCvv() ) {
+        $data['card_expiration_date'] = sprintf('%02d', $card->getExpiryMonth()).(string)$card->getExpiryYear();
+        if ($card->getCvv()) {
             $data['card_cvv'] = $card->getCvv();
         }
         $data['card_holder_name'] = $card->getName();
@@ -264,10 +264,10 @@ abstract class AbstractRequest extends BaseAbstractRequest
         $data['customer']['document_number'] = $card->getHolderDocumentNumber();
 
         $arrayAddress = $this->extractAddress($card->getAddress1());
-        if ( ! empty($arrayAddress['street']) ) {
+        if (! empty($arrayAddress['street'])) {
             $data['customer']['address'] = $arrayAddress;
             $data['customer']['address']['zipcode'] = $card->getPostcode();
-            if ( $card->getAddress2() ) {
+            if ($card->getAddress2()) {
                 $data['customer']['address']['neighborhood'] = $card->getAddress2();
             }
 
@@ -277,7 +277,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
         }
 
         $arrayPhone = $this->extractDddPhone($card->getPhone());
-        if ( ! empty($arrayPhone['ddd']) ) {
+        if (! empty($arrayPhone['ddd'])) {
             $data['customer']['phone'] = $arrayPhone;
         }
 
@@ -298,10 +298,10 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         $arrayPhone = array();
         $phone = preg_replace("/[^0-9]/", "", $phoneNumber);
-        if(substr( $phone, 0, 1 ) === "0"){
+        if (substr($phone, 0, 1) === "0") {
             $arrayPhone['ddd'] = substr($phone, 1, 2);
             $arrayPhone['number'] = substr($phone, 3);
-        } elseif (strlen($phone) < 10 ) {
+        } elseif (strlen($phone) < 10) {
             $arrayPhone['ddd'] = '';
             $arrayPhone['number'] = $phone;
         } else {
