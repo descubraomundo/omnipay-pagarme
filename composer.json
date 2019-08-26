@@ -10,23 +10,37 @@
         "pagarme"
     ],
     "homepage": "https://github.com/descubraomundo/omnipay-pagarme",
-    "require": {
-        "php": ">=5.3.0",
-        "omnipay/common": "~2.0"
-    },
-    "require-dev": {
-        "omnipay/tests": "~2.0",
-        "codeclimate/php-test-reporter": "^0.1.0@dev"
-    },
     "license": "MIT",
     "authors": [
         {
-            "name": "Descubra o Mundo",
-            "email": "geeks@descubraomundo.com"
+            "name": "descubraomundo",
+            "email": "geeks@descubraomundo.com",
+            "homepage": "https://www.descubraomundo.com"
         }
     ],
-    "autoload": {
-        "psr-4": { "Omnipay\\Pagarme\\" : "src/" }
+    "require": {
+        "omnipay/common": "^3.0"
     },
-    "minimum-stability": "dev"
+    "require-dev": {
+        "omnipay/tests": "~3.0",
+        "squizlabs/php_codesniffer": "^3",
+        "phpro/grumphp": "^0.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Pagarme\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "League\\Pagarme\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 src/",
+        "fix-style": "phpcbf -p --standard=PSR2 src/"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
