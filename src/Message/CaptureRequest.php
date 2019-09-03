@@ -26,10 +26,12 @@ class CaptureRequest extends AbstractRequest
     {
         $this->validate('transactionReference');
         $data = array();
-     
+        $data['id_ou_token'] = $this->getTransactionReference();
+        $data['amount']      = $this->getAmountInteger();
+
         return $data;
     }
-    
+
     public function getEndpoint()
     {
         return $this->endpoint.'transactions/'.$this->getTransactionReference().'/capture';
