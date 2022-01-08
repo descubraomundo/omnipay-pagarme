@@ -184,7 +184,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
                 'Content-Type' => 'application/json'
             ],
             json_encode($this->insertApiKeyToData($data)),
-            $this->getOptions()
+            is_array($this->getOptions()) && empty($this->getOptions()) ? '' : $this->getOptions()
         );
 
         $payload =  json_decode($httpRequest->getBody()->getContents(), true);
